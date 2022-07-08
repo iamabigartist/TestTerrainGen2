@@ -8,7 +8,6 @@ namespace Labs
 			// Create and configure FastNoise object
 			FastNoiseLite noise = new FastNoiseLite();
 			noise.SetNoiseType(FastNoiseLite.NoiseType.Cellular);
-			noise.SetCellularReturnType();
 // Gather noise data
 			float[] noiseData = new float[128 * 128];
 			int index = 0;

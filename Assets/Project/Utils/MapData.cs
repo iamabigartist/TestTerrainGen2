@@ -1,16 +1,55 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Runtime.CompilerServices;
+using Unity.Collections;
+using Unity.Mathematics;
 namespace Utils
 {
-	public class MapData<TData>
+	public struct MapData<TData> : IDisposable
+		where TData : struct
 	{
-		public Vector2Int size;
-		public TData[] data;
+		public int2 size;
+		public NativeArray<TData> data;
+
+	#region Indexer
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public int IndexByPosition(int x, int y)
 		{
 			return x + y * size.x;
 		}
 
-		public Vector2Int PositionByIndex(int i)
+		public TData this[int x, int y]
+		{
+			get => data[IndexByPosition(x, y)];
+			set => data[IndexByPosition(x, y)] = value;
+		}
+
+		public TData this[int i]
+		{
+			get => data[i];
+			set => data[i] = value;
+		}
+
+	#endregion
+
+	#region Entry
+
+		public MapData(int2 size, Allocator allocator, NativeArrayOptions options = NativeArrayOptions.ClearMemory)
+		{
+			data = new(size.x * size.y, allocator, options);
+			this.size = size;
+		}
+
+		public void Dispose()
+		{
+			data.Dispose();
+		}
+
+	#endregion
+
+	#region Util
+
+		public int2 PositionByIndex(int i)
 		{
 			int y = i / size.x;
 			i -= y * size.x;
@@ -18,5 +57,8 @@ namespace Utils
 
 			return new(x, y);
 		}
+
+	#endregion
+
 	}
 }
