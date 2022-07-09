@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using Unity.Mathematics;
 // Switch between using floats or doubles for input position
 using FNLfloat = System.Single;
 //using FNLfloat = System.Double;
@@ -1813,6 +1814,64 @@ public struct FastNoiseLiteBurst
 		}
 	}
 
+	public float2 GetCellularF1Point(float x, float y)
+	{
+		int seed = mSeed;
+		int xr = FastRound(x);
+		int yr = FastRound(y);
+
+		float distance0 = float.MaxValue;
+		float distance1 = float.MaxValue;
+		var sample_point = new float2(x, y);
+		var closestPoint = sample_point;
+
+		float cellularJitter = 0.43701595f * mCellularJitterModifier;
+
+		int xPrimed = (xr - 1) * PrimeX;
+		int yPrimedBase = (yr - 1) * PrimeY;
+
+		for (int xi = xr - 1; xi <= xr + 1; xi++)
+		{
+			int yPrimed = yPrimedBase;
+
+			for (int yi = yr - 1; yi <= yr + 1; yi++)
+			{
+				int hash = Hash(seed, xPrimed, yPrimed);
+				int idx = hash & (255 << 1);
+
+				float vecX = (float)(xi - x) + RandVecs2D[idx] * cellularJitter;
+				float vecY = (float)(yi - y) + RandVecs2D[idx | 1] * cellularJitter;
+
+				float newDistance;
+				switch (mCellularDistanceFunction)
+				{
+					default:
+					case CellularDistanceFunction.Euclidean:
+					case CellularDistanceFunction.EuclideanSq:
+						newDistance = vecX * vecX + vecY * vecY;
+						break;
+					case CellularDistanceFunction.Manhattan:
+						newDistance = FastAbs(vecX) + FastAbs(vecY);
+						break;
+					case CellularDistanceFunction.Hybrid:
+						newDistance = FastAbs(vecX) + FastAbs(vecY) + (vecX * vecX + vecY * vecY);
+						break;
+				}
+
+				distance1 = FastMax(FastMin(distance1, newDistance), distance0);
+				if (newDistance < distance0)
+				{
+					distance0 = newDistance;
+					closestPoint = sample_point + new float2(vecX, vecY);
+				}
+				yPrimed += PrimeY;
+			}
+			xPrimed += PrimeX;
+		}
+		return closestPoint / 1000f;
+	}
+
+	
 
 	// Perlin Noise
 
