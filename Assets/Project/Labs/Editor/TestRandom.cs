@@ -2,12 +2,12 @@
 using UnityEditor;
 namespace Labs
 {
-	public class TestRandomWindow : EditorWindow
+	public class TestRandom : EditorWindow
 	{
 		[MenuItem("Labs/TestRandom")]
 		static void ShowWindow()
 		{
-			var window = GetWindow<TestRandomWindow>();
+			var window = GetWindow<TestRandom>();
 			window.titleContent = new("TestRandom");
 			window.Show();
 		}

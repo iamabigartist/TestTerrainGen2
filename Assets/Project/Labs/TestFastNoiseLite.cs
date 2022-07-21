@@ -1,4 +1,4 @@
-﻿using MyTerrainGen.PositionalVoronoi;
+﻿using MyTerrainGen.Noise.PositionalVoronoi;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
