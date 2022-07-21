@@ -36,7 +36,7 @@ namespace Labs
 		where TExecutor : struct, IRefExecutor
 	{
 		TExecutor executor;
-		NativeArray<int> array;
+		[WriteOnly] NativeArray<int> array;
 
 		public void Execute(int index)
 		{
