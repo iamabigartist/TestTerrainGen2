@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mRenderer: {fileID: 281401687}
-  resolution: 512
+  resolution: 8192
   voronoi_jitter: 0.2
   voronoi_interval: 50
 --- !u!4 &1669099870

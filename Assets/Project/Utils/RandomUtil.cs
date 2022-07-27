@@ -1,0 +1,34 @@
+﻿using Unity.Collections;
+using Unity.Mathematics;
+namespace Utils
+{
+	public static class RandomUtil
+	{
+		// public static T SelectWithProbability<T>(this Random rand, NativeArray<T> options, NativeArray<float> probabilities) where T : struct
+		// {
+		// 	
+		// }
+		public static T SelectArray<T>(this Random rand, NativeArray<T> options) where T : struct
+		{
+			var select_index = rand.NextInt(options.Length);
+			return options[select_index];
+		}
+
+		public static T Select2<T>(this Random rand, T a, T b) where T : struct
+		{
+			return rand.NextBool() ? a : b;
+		}
+
+		public static T Select4<T>(this Random rand, T a, T b, T c, T d) where T : struct
+		{
+			var select_index = rand.NextInt(4);
+			return select_index switch
+			{
+				0 => a,
+				1 => b,
+				2 => c,
+				3 => d
+			};
+		}
+	}
+}

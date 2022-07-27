@@ -23,6 +23,7 @@ namespace Utils
 	#region Indexer
 
 		public int this[int x, int y] => x + y * Size.x;
+		public int this[int2 pos] => pos.x + pos.y * Size.x;
 		public int2 this[int i]
 		{
 			get
