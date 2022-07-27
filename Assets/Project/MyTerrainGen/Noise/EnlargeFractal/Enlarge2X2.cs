@@ -29,7 +29,7 @@ namespace MyTerrainGen.Noise.EnlargeFractal
 			var seed10 = data[i[seed_pos10]];
 			var seed01 = data[i[seed_pos01]];
 			var seed11 = data[i[seed_pos11]];
-			var rand = rand_gen.GenRand(i_pixel);
+			rand_gen.GenRand(i_pixel, out var rand);
 			sampler.Sample(rand,
 				seed00, seed10, seed01, seed11,
 				out var result00, out var result10, out var result01, out var result11);
@@ -44,15 +44,13 @@ namespace MyTerrainGen.Noise.EnlargeFractal
 			data_2x2[i_2x2[result_pos11]] = result11;
 		}
 
-		public static JobHandle Plan(NativeArray<int> data, int2 size, TEnlargeSampler sampler, uint rand_seed, out NativeArray<int> data_2x2, JobHandle deps = default)
+		public static JobHandle Plan(NativeSlice<int> data, int2 size, NativeSlice<int> data_2x2, TEnlargeSampler sampler, uint rand_seed, JobHandle deps = default)
 		{
-			var size_2x2 = size * 2;
-			data_2x2 = new((size * 2).area(), Allocator.Persistent);
 			var job = new Enlarge2X2<TEnlargeSampler>()
 			{
 				rand_gen = new(rand_seed),
 				i = new(size),
-				i_2x2 = new(size_2x2),
+				i_2x2 = new(size * 2),
 				data = data,
 				sampler = sampler,
 				data_2x2 = data_2x2
