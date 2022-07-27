@@ -41,23 +41,25 @@ namespace MyTerrainGen.Noise.EnlargeFractal.Samplers
 					}
 				case 2:
 					{
-						int a = count_array[0];
-						int b = count_array[1];
-						if (a > b) { result11 = a; }
-						else if (a < b) { result11 = b; }
+						int a = seed_array[0];
+						int b = seed_array[1];
+						int n_a = count_array[0];
+						int n_b = count_array[1];
+						if (n_a > n_b) { result11 = a; }
+						else if (n_a < n_b) { result11 = b; }
 						else { result11 = rand.Select2(a, b); }
 						break;
 					}
 				case 3:
 					{
-						if (count_array[0] == 2) { result11 = count_array[0]; }
-						else if (count_array[1] == 2) { result11 = count_array[1]; }
-						else { result11 = count_array[2]; }
+						if (count_array[0] == 2) { result11 = seed_array[0]; }
+						else if (count_array[1] == 2) { result11 = seed_array[1]; }
+						else { result11 = seed_array[2]; }
 						break;
 					}
 				case 4:
 					{
-						result11 = rand.Select4(seed00, seed10, seed01, seed11);
+						result11 = rand.SelectArray(seed_array.AsArray());
 						break;
 					}
 				default:
@@ -68,7 +70,6 @@ namespace MyTerrainGen.Noise.EnlargeFractal.Samplers
 			}
 
 		#endregion
-
 		}
 	}
 }

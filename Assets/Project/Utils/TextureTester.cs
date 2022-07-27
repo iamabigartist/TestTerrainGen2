@@ -26,7 +26,7 @@ namespace Utils
 
 	#region Process
 
-		public void InitTexture()
+		void InitTexture()
 		{
 
 			mTexture = new(TextureSize.x, TextureSize.y, TextureFormat.RGBAFloat, false) { filterMode = FilterMode.Point };

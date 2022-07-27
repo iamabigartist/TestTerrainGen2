@@ -8,7 +8,7 @@ namespace MyTerrainGen.Noise.EnlargeFractal
 		CompileSynchronously = true)]
 	public struct GenAreaIdList : IJobFor
 	{
-		[ReadOnly] NativeSlice<int> data;
+		[ReadOnly] NativeArray<int> data;
 		public void Execute(int i_pixel) {}
 	}
 }
