@@ -430,8 +430,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mRenderer: {fileID: 439395530}
   TextureSize:
-    x: 2048
-    y: 2048
+    x: 0
+    y: 0
 --- !u!4 &836322528
 Transform:
   m_ObjectHideFlags: 0
@@ -460,7 +460,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d19837ac554050b181a77365daa15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rand_seed: 10012
+  rand_seed: 1230
+  seed_size:
+    x: 4
+    y: 4
+  stage_list: 0100000001000000010000000100000001000000010000000000000000000000000000000000000000000000
 --- !u!1 &1230241113
 GameObject:
   m_ObjectHideFlags: 0

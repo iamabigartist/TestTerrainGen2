@@ -11,7 +11,7 @@ namespace JobTerrainGen.EnlargeFractal
 		[WriteOnly] NativeArray<int> data;
 		public void Execute(int i_seed)
 		{
-			data[i_seed] = i_seed;
+			data[i_seed] = i_seed + 1;
 		}
 
 		public static JobHandle Plan(out NativeArray<int> data, int length, JobHandle deps = default)

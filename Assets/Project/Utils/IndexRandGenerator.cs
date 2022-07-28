@@ -13,7 +13,7 @@ namespace Utils
 		}
 		uint ResultIndex_Multiply(uint i)
 		{
-			return seed * i;
+			return seed ^ i;
 		}
 		public void GenRand(int i, out Random rand) { rand = Random.CreateFromIndex(ResultIndex_Multiply((uint)i)); }
 	}

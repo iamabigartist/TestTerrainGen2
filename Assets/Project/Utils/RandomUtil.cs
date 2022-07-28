@@ -19,6 +19,17 @@ namespace Utils
 			return rand.NextBool() ? a : b;
 		}
 
+		public static T Select3<T>(this Random rand, T a, T b, T c) where T : struct
+		{
+			var select_index = rand.NextInt(3);
+			return select_index switch
+			{
+				0 => a,
+				1 => b,
+				2 => c
+			};
+		}
+		
 		public static T Select4<T>(this Random rand, T a, T b, T c, T d) where T : struct
 		{
 			var select_index = rand.NextInt(4);

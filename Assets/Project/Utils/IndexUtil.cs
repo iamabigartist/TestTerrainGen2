@@ -47,6 +47,13 @@ namespace Utils
 				y < 0 || y > Size.y - 1;
 		}
 
+		public bool OutOfRange(int2 p)
+		{
+			return
+				p.x < 0 || p.x > Size.x - 1 ||
+				p.y < 0 || p.y > Size.y - 1;
+		}
+
 	#endregion
 	}
 
