@@ -1,5 +1,5 @@
 ﻿using Unity.Mathematics;
-namespace MyTerrainGen.Noise.EnlargeFractal.Samplers
+namespace JobTerrainGen.EnlargeFractal.Samplers
 {
 	public interface IEnlargeSampler
 	{

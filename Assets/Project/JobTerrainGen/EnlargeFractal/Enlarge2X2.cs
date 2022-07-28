@@ -1,10 +1,10 @@
-﻿using MyTerrainGen.Noise.EnlargeFractal.Samplers;
+﻿using JobTerrainGen.EnlargeFractal.Samplers;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Utils;
-namespace MyTerrainGen.Noise.EnlargeFractal
+namespace JobTerrainGen.EnlargeFractal
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,

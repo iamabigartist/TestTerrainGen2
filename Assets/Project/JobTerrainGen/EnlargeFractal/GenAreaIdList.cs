@@ -1,7 +1,7 @@
 ﻿using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
-namespace MyTerrainGen.Noise.EnlargeFractal
+namespace JobTerrainGen.EnlargeFractal
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,

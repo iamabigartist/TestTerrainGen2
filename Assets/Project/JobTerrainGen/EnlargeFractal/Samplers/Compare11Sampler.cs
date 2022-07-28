@@ -1,7 +1,7 @@
 ﻿using Unity.Collections;
 using Unity.Mathematics;
 using Utils;
-namespace MyTerrainGen.Noise.EnlargeFractal.Samplers
+namespace JobTerrainGen.EnlargeFractal.Samplers
 {
 	public struct Compare11Sampler : IEnlargeSampler
 	{

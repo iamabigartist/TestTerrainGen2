@@ -4,7 +4,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Utils;
 using static Unity.Mathematics.math;
-namespace MyTerrainGen.Noise.PositionalVoronoi
+namespace JobTerrainGen.Noise.PositionalVoronoi
 {
 	[BurstCompile(
 		FloatPrecision.High, FloatMode.Fast,
