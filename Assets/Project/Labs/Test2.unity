@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d19837ac554050b181a77365daa15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResultSize:
+  CurrentResultSize:
     x: 2048
     y: 2048
   Tester: {fileID: 439395532}
