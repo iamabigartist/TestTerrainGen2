@@ -4,6 +4,7 @@ using JobTerrainGen.EnlargeFractal.View;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
+using UnityEngine;
 using Utils;
 namespace JobTerrainGen.View
 {
@@ -19,20 +20,23 @@ namespace JobTerrainGen.View
 			result_color[i[2, 4]] = new(0, 0, 0);
 			result_color[i[4, 8]] = new(0, 0, 0);
 		}
-		
-		void Start()
+
+		[ContextMenu("Run")]
+		void Run()
 		{
 			var jh = new JobHandle();
 			GenSeedData.Plan(out var data, seed_size.area(), ref jh);
 			EnlargeUtil.EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
 			SeedDataToColorRand.Plan(results.Last(), out var result_color, ref jh);
 			jh.Complete();
-
 			MarkCoordinate(result_color);
-
 			ApplyResultToTexture(result_color.Slice(), 0);
-
 			PlanDispose(data, result_color, results);
+		}
+
+		void Start()
+		{
+			Run();
 		}
 	}
 }
