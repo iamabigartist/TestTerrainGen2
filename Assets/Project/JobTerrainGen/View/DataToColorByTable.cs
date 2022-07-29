@@ -9,7 +9,7 @@ namespace JobTerrainGen.EnlargeFractal.View
 		CompileSynchronously = true)]
 	public struct DataToColorByTable : IJobFor
 	{
-		[ReadOnly] NativeArray<float3> color_table;
+		[ReadOnly] NativeHashMap<int, float3> color_table;
 		[ReadOnly] NativeArray<int> data;
 		[WriteOnly] NativeArray<float3> color;
 		public void Execute(int i)
@@ -17,7 +17,7 @@ namespace JobTerrainGen.EnlargeFractal.View
 			color[i] = color_table[data[i]];
 		}
 
-		public static void Plan(NativeArray<int> data, NativeArray<float3> color_table, out NativeArray<float3> color, ref JobHandle deps)
+		public static void Plan(NativeArray<int> data, NativeHashMap<int, float3> color_table, out NativeArray<float3> color, ref JobHandle deps)
 		{
 			color = new(data.Length, Allocator.TempJob);
 			var job = new DataToColorByTable()

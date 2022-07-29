@@ -5,6 +5,7 @@ using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using Utils;
+using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.View
 {
 	public abstract class TerrainDataTester : MonoBehaviour
@@ -39,6 +40,7 @@ namespace JobTerrainGen.View
 	#region Template
 
 		protected abstract int enlarge_count { get; }
+		protected abstract void Run();
 
 	#endregion
 
@@ -80,12 +82,24 @@ namespace JobTerrainGen.View
 
 	#region UnityEntry
 
+		[ContextMenu("RandRun")]
+		void RandRun()
+		{
+			rand_seed = Random.CreateFromIndex(rand_seed).NextUInt();
+			Run();
+		}
+
+		protected void Start()
+		{
+			Run();
+		}
+
 		protected void OnValidate()
 		{
 			CurrentResultSize = ResultSize;
 		}
 
-		void OnDestroy()
+		protected void OnDestroy()
 		{
 			Dispose();
 		}

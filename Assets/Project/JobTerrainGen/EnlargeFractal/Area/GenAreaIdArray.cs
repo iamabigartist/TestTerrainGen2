@@ -3,7 +3,7 @@ using Unity.Collections;
 using Unity.Jobs;
 namespace JobTerrainGen.EnlargeFractal.Area
 {
-	public static class GenAreaIdList
+	public static class GenAreaIdArray
 	{
 		[BurstCompile(
 			DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
@@ -29,27 +29,31 @@ namespace JobTerrainGen.EnlargeFractal.Area
 		[BurstCompile(
 			DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
 			CompileSynchronously = true)]
-		public struct IdSetToList : IJob
+		struct IdSetToList : IJob
 		{
-			NativeHashSet<int> set;
-			NativeArray<int> list;
+			[ReadOnly] NativeHashSet<int> set;
+			[WriteOnly] NativeList<int> list;
 			public void Execute()
 			{
-				list.CopyFrom(set.ToNativeArray(Allocator.Temp));
+				var array = set.ToNativeArray(Allocator.Temp);
+				list.Resize(set.Count(), NativeArrayOptions.UninitializedMemory);
+				list.CopyFrom(array);
 			}
 
-			public static void Plan(NativeHashSet<int> set, out NativeArray<int> list, ref JobHandle deps)
+			public static void Plan(NativeHashSet<int> set, out NativeArray<int> array, ref JobHandle deps, out NativeList<int> list_see)
 			{
-				list = new(set.Count(), Allocator.TempJob);
+				var list = new NativeList<int>(Allocator.TempJob);
+				list_see = list;
+				array = list.AsDeferredJobArray();
 				var job = new IdSetToList() { set = set, list = list };
 				deps = job.Schedule(deps);
 			}
 		}
 
-		public static void Plan(NativeArray<int> data, out NativeArray<int> list, ref JobHandle deps)
+		public static void Plan(NativeArray<int> data, out NativeArray<int> array, ref JobHandle deps, out NativeList<int> list_see)
 		{
 			GenAreaIdSet.Plan(data, out var set, ref deps);
-			IdSetToList.Plan(set, out list, ref deps);
+			IdSetToList.Plan(set, out array, ref deps, out list_see);
 			deps = set.Dispose(deps);
 		}
 	}

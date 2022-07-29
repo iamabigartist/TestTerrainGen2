@@ -15,5 +15,18 @@ namespace JobTerrainGen.Landform
 			rand_gen.GenRand(cur_area_id, out var rand);
 			area_landforms[i_area] = rand.NextFloat(1f) < land_ratio ? 1 : 0;
 		}
+
+		public static void Plan(NativeArray<int> area_ids, float land_ratio, uint rand_seed, out NativeArray<int> area_landforms, ref JobHandle jh)
+		{
+			var area_count = area_ids.Length;
+			area_landforms = new(area_count, Allocator.TempJob);
+			jh = new AreaToOceanLandRandom()
+			{
+				land_ratio = land_ratio,
+				rand_gen = new(rand_seed),
+				area_ids = area_ids,
+				area_landforms = area_landforms
+			}.ScheduleParallel(area_count, 4, jh);
+		}
 	}
 }

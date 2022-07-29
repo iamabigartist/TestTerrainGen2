@@ -22,7 +22,7 @@ namespace JobTerrainGen.View
 		}
 
 		[ContextMenu("Run")]
-		void Run()
+		protected override void Run()
 		{
 			var jh = new JobHandle();
 			GenSeedData.Plan(out var data, seed_size.area(), ref jh);
@@ -32,11 +32,6 @@ namespace JobTerrainGen.View
 			MarkCoordinate(result_color);
 			ApplyResultToTexture(result_color.Slice(), 0);
 			PlanDispose(data, result_color, results);
-		}
-
-		void Start()
-		{
-			Run();
 		}
 	}
 }
