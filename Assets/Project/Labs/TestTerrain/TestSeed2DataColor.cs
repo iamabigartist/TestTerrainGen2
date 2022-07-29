@@ -10,9 +10,9 @@ namespace JobTerrainGen.View
 {
 	public class TestSeed2DataColor : TerrainDataTester
 	{
-		public EnlargeUtil.Stage[] stage_list;
 		protected override int enlarge_count => stage_list.Length;
 
+		public EnlargeUtil.Stage[] stage_list;
 		void MarkCoordinate(NativeArray<float3> result_color)
 		{
 			var i = new Index2D(ResultSize);
