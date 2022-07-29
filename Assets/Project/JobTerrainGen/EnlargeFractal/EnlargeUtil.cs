@@ -12,7 +12,7 @@ namespace JobTerrainGen.EnlargeFractal
 			Sawtooth
 		}
 
-		public static JobHandle EnlargePlan(NativeArray<int> data, int2 data_size, out NativeArray<int>[] Results, Stage[] EnlargeStages, uint plan_rand_seed, JobHandle deps)
+		public static void EnlargePlan(NativeArray<int> data, int2 data_size, out NativeArray<int>[] Results, Stage[] EnlargeStages, uint plan_rand_seed, ref JobHandle deps)
 		{
 			var stage_count = EnlargeStages.Length;
 			Results = new NativeArray<int>[stage_count];
@@ -25,12 +25,12 @@ namespace JobTerrainGen.EnlargeFractal
 				{
 					case Stage.Normal:
 						{
-							deps = Enlarge2X2<Compare11Sampler>.Plan(data, data_size, out data, new(), stage_rand_seed, deps);
+							Enlarge2X2<Compare11Sampler>.Plan(data, data_size, out data, new(), stage_rand_seed, ref deps);
 						}
 						break;
 					case Stage.Sawtooth:
 						{
-							deps = Enlarge2X2<Rand11Sampler>.Plan(data, data_size, out data, new(), stage_rand_seed, deps);
+							Enlarge2X2<Rand11Sampler>.Plan(data, data_size, out data, new(), stage_rand_seed, ref deps);
 						}
 						break;
 					default: throw new();
@@ -38,7 +38,6 @@ namespace JobTerrainGen.EnlargeFractal
 				data_size *= 2;
 				Results[i] = data;
 			}
-			return deps;
 		}
 	}
 }

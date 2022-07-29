@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.chua.prototype-utils": "https://github.com/iamabigartist/UnityPrototypeUtils.git?path=/Assets/PrototypeUtils#dev",
     "com.unity.burst": "1.7.3",
     "com.unity.cinemachine": "2.8.3",
     "com.unity.collections": "1.2.4",

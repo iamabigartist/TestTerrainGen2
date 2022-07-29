@@ -27,7 +27,7 @@ namespace JobTerrainGen.Noise.PositionalVoronoi
 			}
 		}
 
-		public static JobHandle ScheduleParallel(NativeArray<float2> seeds, int2 seeds_size, float interval, float jitter, uint rand_seed)
+		public static void Plan(NativeArray<float2> seeds, int2 seeds_size, float interval, float jitter, uint rand_seed, ref JobHandle deps)
 		{
 			var job = new VoronoiSeedsJob()
 			{
@@ -37,7 +37,7 @@ namespace JobTerrainGen.Noise.PositionalVoronoi
 				seeds_matrix = seeds,
 				rand = new(rand_seed)
 			};
-			return job.ScheduleParallel(seeds_size.y, 16, default);
+			deps = job.ScheduleParallel(seeds_size.y, 16, deps);
 		}
 	}
 
@@ -61,7 +61,7 @@ namespace JobTerrainGen.Noise.PositionalVoronoi
 			texture[i[seed_position.x + 1, seed_position.y - 1]] = new(1, 1, 1);
 		}
 
-		public static JobHandle ScheduleParallel(NativeArray<float2> seeds, int2 texture_size, NativeSlice<float3> texture, JobHandle deps = default)
+		public static void Plan(NativeArray<float2> seeds, int2 texture_size, NativeSlice<float3> texture, ref JobHandle deps)
 		{
 			var job = new VoronoiSeedsTextureJob()
 			{
@@ -69,7 +69,7 @@ namespace JobTerrainGen.Noise.PositionalVoronoi
 				i = new(texture_size),
 				texture = texture
 			};
-			return job.ScheduleParallel(seeds.Length, 512, deps);
+			deps = job.ScheduleParallel(seeds.Length, 512, deps);
 		}
 
 	}

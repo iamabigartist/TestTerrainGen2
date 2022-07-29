@@ -32,5 +32,7 @@ namespace JobTerrainGen.EnlargeFractal.Area
 
 			area_centers[i_area] = (min_pos + max_pos) / 2;
 		}
+		
+		
 	}
 }

@@ -14,14 +14,11 @@ namespace JobTerrainGen.EnlargeFractal
 			data[i_seed] = i_seed + 1;
 		}
 
-		public static JobHandle Plan(out NativeArray<int> data, int length, JobHandle deps = default)
+		public static void Plan(out NativeArray<int> data, int length, ref JobHandle deps)
 		{
 			data = new(length, Allocator.TempJob);
-			var job = new GenSeedData()
-			{
-				data = data
-			};
-			return job.ScheduleParallel(data.Length, 1024, deps);
+			var job = new GenSeedData() { data = data };
+			deps = job.ScheduleParallel(data.Length, 1024, deps);
 		}
 	}
 }

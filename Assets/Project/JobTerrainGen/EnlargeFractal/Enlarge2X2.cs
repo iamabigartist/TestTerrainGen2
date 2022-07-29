@@ -48,7 +48,7 @@ namespace JobTerrainGen.EnlargeFractal
 			data_2x2[i_2x2[result_pos11]] = result11;
 		}
 
-		public static JobHandle Plan(NativeArray<int> data, int2 size, out NativeArray<int> data_2x2, TEnlargeSampler sampler, uint rand_seed, JobHandle deps = default)
+		public static void Plan(NativeArray<int> data, int2 size, out NativeArray<int> data_2x2, TEnlargeSampler sampler, uint rand_seed, ref JobHandle deps)
 		{
 			var size_2x2 = size * 2;
 			data_2x2 = new(size_2x2.area(), Allocator.TempJob);
@@ -61,7 +61,7 @@ namespace JobTerrainGen.EnlargeFractal
 				sampler = sampler,
 				data_2x2 = data_2x2
 			};
-			return job.ScheduleParallel(size.area(), 1, deps);
+			deps = job.ScheduleParallel(size.area(), 1, deps);
 		}
 	}
 }

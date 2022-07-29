@@ -17,16 +17,12 @@ namespace JobTerrainGen.EnlargeFractal.Area
 				id_set.Add(data[i_pixel]);
 			}
 
-			public static JobHandle Plan(NativeArray<int> data, out NativeHashSet<int> id_set, JobHandle deps = default)
+			public static void Plan(NativeArray<int> data, out NativeHashSet<int> id_set, ref JobHandle deps)
 			{
 				var len = data.Length;
 				id_set = new(len, Allocator.TempJob);
-				var job = new GenAreaIdSet()
-				{
-					data = data,
-					id_set = id_set.AsParallelWriter()
-				};
-				return job.ScheduleParallel(len, 1024, deps);
+				var job = new GenAreaIdSet() { data = data, id_set = id_set.AsParallelWriter() };
+				deps = job.ScheduleParallel(len, 1024, deps);
 			}
 		}
 
@@ -42,24 +38,19 @@ namespace JobTerrainGen.EnlargeFractal.Area
 				list.CopyFrom(set.ToNativeArray(Allocator.Temp));
 			}
 
-			public static JobHandle Plan(NativeHashSet<int> set, out NativeArray<int> list, JobHandle deps = default)
+			public static void Plan(NativeHashSet<int> set, out NativeArray<int> list, ref JobHandle deps)
 			{
 				list = new(set.Count(), Allocator.TempJob);
-				var job = new IdSetToList()
-				{
-					set = set,
-					list = list
-				};
-				return job.Schedule(deps);
+				var job = new IdSetToList() { set = set, list = list };
+				deps = job.Schedule(deps);
 			}
 		}
 
-		public static JobHandle Plan(NativeArray<int> data, out NativeArray<int> list, JobHandle deps = default)
+		public static void Plan(NativeArray<int> data, out NativeArray<int> list, ref JobHandle deps)
 		{
-			var gen_jh = GenAreaIdSet.Plan(data, out var set, deps);
-			var convert_jh = IdSetToList.Plan(set, out list, gen_jh);
-			var dispose_jh = set.Dispose(convert_jh);
-			return dispose_jh;
+			GenAreaIdSet.Plan(data, out var set, ref deps);
+			IdSetToList.Plan(set, out list, ref deps);
+			deps = set.Dispose(deps);
 		}
 	}
 

@@ -146,9 +146,10 @@ namespace Labs
 			//Voronoi seed points
 			var seeds_size = (int2)floor((float2)texture_size / voronoi_interval) - new int2(1, 1);
 			var seed_matrix = new NativeArray<float2>(seeds_size.area(), Allocator.TempJob);
-			var voronoi_seeds_job = VoronoiSeedsJob.ScheduleParallel(seed_matrix, seeds_size, voronoi_interval, voronoi_jitter, 100);
-			var voronoi_seeds_texture_job = VoronoiSeedsTextureJob.ScheduleParallel(seed_matrix, texture_size, red_green_blue, voronoi_seeds_job);
-			voronoi_seeds_texture_job.Complete();
+			var jh = new JobHandle();
+			VoronoiSeedsJob.Plan(seed_matrix, seeds_size, voronoi_interval, voronoi_jitter, 100, ref jh);
+			VoronoiSeedsTextureJob.Plan(seed_matrix, texture_size, red_green_blue, ref jh);
+			jh.Complete();
 			seed_matrix.Dispose();
 			
 			mTexture.Apply();

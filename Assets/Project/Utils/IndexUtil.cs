@@ -1,4 +1,5 @@
 ﻿using Unity.Mathematics;
+using static Unity.Mathematics.math;
 namespace Utils
 {
 
@@ -53,6 +54,13 @@ namespace Utils
 				p.x < 0 || p.x > Size.x - 1 ||
 				p.y < 0 || p.y > Size.y - 1;
 		}
+
+		public int2 Sample(float u, float v)
+		{
+			return (int2)round(new float2(Size.x * u - 0.5f, Size.y * v - 0.5f));
+		}
+		
+		
 
 	#endregion
 	}

@@ -1,14 +1,25 @@
-﻿using Unity.Collections;
+﻿using System;
+using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 namespace Utils
 {
+	[RequireComponent(typeof(Renderer), typeof(Collider))]
 	public class TextureTester : MonoBehaviour
 	{
+
+	#region Event
+
+		public event Action<(int2 texture_size, Texture2D texture)> OnTextureInited;
+		public event Action<(Vector3 world_pos, int2 pixel_pos)> OnHoverTexture;
+
+	#endregion
 		
 	#region Reference
 
-		public Renderer mRenderer;
+		Renderer mRenderer;
+		Collider mCollider;
+		Camera mouse_camera;
 
 	#endregion
 
@@ -22,10 +33,7 @@ namespace Utils
 	#region Data
 
 		Texture2D mTexture;
-
-	#endregion
-
-	#region Process
+		Index2D texture_i;
 
 	#endregion
 
@@ -36,6 +44,9 @@ namespace Utils
 			TextureSize = textureSize;
 			mTexture = new(TextureSize.x, TextureSize.y, TextureFormat.RGBAFloat, false) { filterMode = FilterMode.Point };
 			mRenderer.material.mainTexture = mTexture;
+			texture_i = new(textureSize);
+
+			OnTextureInited?.Invoke((TextureSize, mTexture));
 		}
 		
 		public void GetTextureSlice<TSliceStride>(out NativeSlice<TSliceStride> Slice, int float_offset_count) where TSliceStride : struct
@@ -47,6 +58,33 @@ namespace Utils
 		public void ApplyTexture()
 		{
 			mTexture.Apply();
+		}
+
+	#endregion
+
+	#region UnityEntry
+
+		void Awake()
+		{
+			mRenderer = GetComponent<Renderer>();
+			mCollider = GetComponent<Collider>();
+			mouse_camera = Camera.main;
+		}
+
+		void Update()
+		{
+			var mouse_position = Input.mousePosition;
+			if (Physics.Raycast(
+				mouse_camera.ScreenPointToRay(mouse_position),
+				out var hit_info, 1000000f, LayerMask.GetMask("TestTexture")))
+			{
+				if (hit_info.collider == mCollider)
+				{
+					var uv = hit_info.textureCoord;
+					var pixel_pos = texture_i.Sample(uv.x, uv.y);
+					OnHoverTexture?.Invoke((hit_info.point, pixel_pos));
+				}
+			}
 		}
 
 	#endregion
