@@ -34,9 +34,7 @@ namespace Labs.TestTerrain
 			GenSeedData.Plan(out var seed_data, seed_size.area(), ref jh);
 			EnlargePlan(seed_data, seed_size, out var area_results, enlarge_stages, rand_seed, ref jh);
 			var area_data = area_results.Last();
-			GenAreaIdArray.Plan(area_data, out var area_ids, ref jh, out var list_see);
-			jh.Complete();
-			area_ids = list_see.AsArray();
+			GenAreaIdArray.Plan(area_data, out var area_ids, ref jh);
 			AreaToOceanLandRandom.Plan(area_ids, land_ratio, rand_seed, out var area_landforms, ref jh);
 			GenOceanLandAreaColor.Plan(area_ids, area_landforms, Color.blue.f3(), out var area_colors, ref jh);
 			DataToColorByTable.Plan(area_data, area_colors, out var rgb, ref jh);

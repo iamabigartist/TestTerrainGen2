@@ -40,20 +40,18 @@ namespace JobTerrainGen.EnlargeFractal.Area
 				list.CopyFrom(array);
 			}
 
-			public static void Plan(NativeHashSet<int> set, out NativeArray<int> array, ref JobHandle deps, out NativeList<int> list_see)
+			public static void Plan(NativeHashSet<int> set, out NativeList<int> list, ref JobHandle deps)
 			{
-				var list = new NativeList<int>(Allocator.TempJob);
-				list_see = list;
-				array = list.AsDeferredJobArray();
+				list = new(Allocator.TempJob);
 				var job = new IdSetToList() { set = set, list = list };
 				deps = job.Schedule(deps);
 			}
 		}
 
-		public static void Plan(NativeArray<int> data, out NativeArray<int> array, ref JobHandle deps, out NativeList<int> list_see)
+		public static void Plan(NativeArray<int> data, out NativeList<int> list, ref JobHandle deps)
 		{
 			GenAreaIdSet.Plan(data, out var set, ref deps);
-			IdSetToList.Plan(set, out array, ref deps, out list_see);
+			IdSetToList.Plan(set, out list, ref deps);
 			deps = set.Dispose(deps);
 		}
 	}
