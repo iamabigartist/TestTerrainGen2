@@ -1,6 +1,7 @@
 ﻿using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
+using static Utils.JobUtil;
 namespace JobTerrainGen.EnlargeFractal.Area
 {
 	public static class GenAreaIdArray
@@ -26,33 +27,14 @@ namespace JobTerrainGen.EnlargeFractal.Area
 			}
 		}
 
-		[BurstCompile(
-			DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
-			CompileSynchronously = true)]
-		struct IdSetToList : IJob
-		{
-			[ReadOnly] NativeHashSet<int> set;
-			[WriteOnly] NativeList<int> list;
-			public void Execute()
-			{
-				var array = set.ToNativeArray(Allocator.Temp);
-				list.Resize(set.Count(), NativeArrayOptions.UninitializedMemory);
-				list.CopyFrom(array);
-			}
-
-			public static void Plan(NativeHashSet<int> set, out NativeList<int> list, ref JobHandle deps)
-			{
-				list = new(Allocator.TempJob);
-				var job = new IdSetToList() { set = set, list = list };
-				deps = job.Schedule(deps);
-			}
-		}
-
-		public static void Plan(NativeArray<int> data, out NativeList<int> list, ref JobHandle deps)
+		public static void Plan(NativeArray<int> data, out ResultGen<NativeArray<int>> array_gen, ref JobHandle deps)
 		{
 			GenAreaIdSet.Plan(data, out var set, ref deps);
-			IdSetToList.Plan(set, out list, ref deps);
-			deps = set.Dispose(deps);
+			array_gen = (out NativeArray<int> array) =>
+			{
+				array = set.ToNativeArray(Allocator.TempJob);
+				set.Dispose();
+			};
 		}
 	}
 

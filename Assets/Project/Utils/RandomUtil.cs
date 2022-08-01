@@ -41,5 +41,24 @@ namespace Utils
 				3 => d
 			};
 		}
+
+
+		public static void SelectMultiple(this Random rand, int select_count, int total_count, out NativeArray<int> selection)
+		{
+			var index_list = new NativeList<int>(total_count, Allocator.Temp);
+			selection = new(select_count, Allocator.Temp);
+			for (int i = 0; i < total_count; i++)
+			{
+				index_list.Add(i);
+			}
+			for (int i_select = 0; i_select < select_count; i_select++)
+			{
+				var cur_list_len = index_list.Length;
+				var cur_selected_index_index = rand.NextInt(cur_list_len);
+				var cur_selected_index = index_list[cur_selected_index_index];
+				index_list.RemoveAt(cur_selected_index_index);
+				selection[i_select] = cur_selected_index;
+			}
+		}
 	}
 }

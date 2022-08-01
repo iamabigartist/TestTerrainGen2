@@ -2,7 +2,7 @@
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-namespace JobTerrainGen.EnlargeFractal.View
+namespace JobTerrainGen.View
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
