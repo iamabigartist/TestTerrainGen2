@@ -9,11 +9,11 @@ namespace JobTerrainGen.Landform
 		[ReadOnly] IndexRandGenerator rand_gen;
 		[ReadOnly] NativeArray<int> area_ids;
 		[WriteOnly] NativeArray<int> area_landforms;
-		public void Execute(int i_land)
+		public void Execute(int i_area)
 		{
-			var cur_area_id = area_ids[i_land];
+			var cur_area_id = area_ids[i_area];
 			rand_gen.GenRand(cur_area_id, out var rand);
-			area_landforms[i_land] = rand.NextFloat(1f) < land_ratio ? 1 : 0;
+			area_landforms[i_area] = rand.NextFloat(1f) < land_ratio ? 1 : 0;
 		}
 
 		public static void Plan(NativeArray<int> area_ids, float land_ratio, uint rand_seed, out NativeArray<int> area_landforms, ref JobHandle jh)
@@ -27,7 +27,7 @@ namespace JobTerrainGen.Landform
 				rand_gen = new(rand_seed),
 				area_ids = area_ids,
 				area_landforms = area_landforms
-			}.ScheduleParallel(land_count, 4, jh);
+			}.ScheduleParallel(area_count, 4, jh);
 		}
 	}
 }
