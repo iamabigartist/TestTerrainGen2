@@ -1,18 +1,20 @@
 ﻿using System.Linq;
 using JobTerrainGen.EnlargeFractal;
-using JobTerrainGen.EnlargeFractal.View;
+using JobTerrainGen.Pipeline;
+using JobTerrainGen.Util;
+using JobTerrainGen.View;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using Utils;
-namespace JobTerrainGen.View
+namespace Labs.TestTerrain
 {
 	public class TestSeed2DataColor : TerrainDataTester
 	{
 		protected override int enlarge_count => stage_list.Length;
 
-		public EnlargeUtil.Stage[] stage_list;
+		public TerrainGenStage[] stage_list;
 		void MarkCoordinate(NativeArray<float3> result_color)
 		{
 			var i = new Index2D(ResultSize);
@@ -26,7 +28,7 @@ namespace JobTerrainGen.View
 		{
 			var jh = new JobHandle();
 			GenSeedData.Plan(out var data, seed_size.area(), ref jh);
-			EnlargeUtil.EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
+			PlaneUtil.EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
 			SeedDataToColorRand.Plan(results.Last(), out var result_color, ref jh);
 			jh.Complete();
 			MarkCoordinate(result_color);

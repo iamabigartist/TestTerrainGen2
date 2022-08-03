@@ -1,7 +1,7 @@
 ﻿using Unity.Collections;
 using Unity.Jobs;
 using Utils;
-namespace JobTerrainGen.Landform
+namespace JobTerrainGen.Land
 {
 	public struct AreaToOceanLandRandom : IJobFor
 	{

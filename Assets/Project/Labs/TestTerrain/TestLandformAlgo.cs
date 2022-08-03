@@ -1,15 +1,16 @@
 using System.Linq;
 using JobTerrainGen.EnlargeFractal;
 using JobTerrainGen.EnlargeFractal.Area;
-using JobTerrainGen.Landform;
+using JobTerrainGen.Land;
+using JobTerrainGen.Pipeline;
 using JobTerrainGen.View;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using Utils;
-using static JobTerrainGen.EnlargeFractal.EnlargeUtil;
-using static JobTerrainGen.EnlargeFractal.EnlargeUtil.Stage;
+using static JobTerrainGen.Pipeline.TerrainGenStage;
+using static JobTerrainGen.Util.PlaneUtil;
 namespace Labs.TestTerrain
 {
 	public class TestLandformAlgo : TerrainDataTester
@@ -18,13 +19,13 @@ namespace Labs.TestTerrain
 
 		protected override int enlarge_count => enlarge_stages.Length;
 
-		public Stage[] enlarge_stages =
+		public TerrainGenStage[] enlarge_stages =
 		{
-			Normal,
-			Sawtooth,
-			Normal,
-			Normal,
-			Normal
+			NormalEnlarge,
+			SawtoothEnlarge,
+			NormalEnlarge,
+			NormalEnlarge,
+			NormalEnlarge
 		};
 
 		[ContextMenu("Run")]

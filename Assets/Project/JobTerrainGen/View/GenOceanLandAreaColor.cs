@@ -11,7 +11,7 @@ namespace JobTerrainGen.View
 	{
 		[ReadOnly] float3 ocean_color;
 		[ReadOnly] NativeArray<int> area_ids;
-		[ReadOnly] NativeArray<int> area_landforms;
+		[ReadOnly] NativeHashMap<int, int> area_landforms;
 		[WriteOnly] NativeHashMap<int, float3>.ParallelWriter area_colors;
 		public void Execute(int i_area)
 		{
@@ -28,9 +28,9 @@ namespace JobTerrainGen.View
 			}
 		}
 
-		public static void Plan(NativeArray<int> area_ids, NativeArray<int> area_landforms, float3 ocean_color, out NativeHashMap<int, float3> area_colors, ref JobHandle deps)
+		public static void Plan(NativeArray<int> area_ids, NativeHashMap<int, int> area_landforms, float3 ocean_color, out NativeHashMap<int, float3> area_colors, ref JobHandle deps)
 		{
-			var area_count = area_landforms.Length;
+			var area_count = area_ids.Length;
 			area_colors = new(area_count + 1, Allocator.Persistent);
 			area_colors[0] = ocean_color;
 			var job = new GenOceanLandAreaColor()

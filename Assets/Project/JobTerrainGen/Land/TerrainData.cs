@@ -1,0 +1,10 @@
+﻿using Unity.Collections;
+using Unity.Mathematics;
+namespace JobTerrainGen.Land
+{
+	public abstract class TerrainData
+	{
+		public NativeArray<int> data;
+		public int2 size;
+	}
+}
