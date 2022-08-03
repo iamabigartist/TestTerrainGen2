@@ -14,7 +14,7 @@ namespace Utils
 		public event Action<(Vector3 world_pos, int2 pixel_pos)> OnHoverTexture;
 
 	#endregion
-		
+
 	#region Reference
 
 		Renderer mRenderer;
@@ -48,7 +48,7 @@ namespace Utils
 
 			OnTextureInited?.Invoke((TextureSize, mTexture));
 		}
-		
+
 		public void GetTextureSlice<TSliceStride>(out NativeSlice<TSliceStride> Slice, int float_offset_count) where TSliceStride : struct
 		{
 			Slice = mTexture.GetRawTextureData<float4>().Slice().
@@ -81,7 +81,7 @@ namespace Utils
 				if (hit_info.collider == mCollider)
 				{
 					var uv = hit_info.textureCoord;
-					var pixel_pos = texture_i.Sample(uv.x, uv.y);
+					var pixel_pos = texture_i.SampleUV(uv.x, uv.y);
 					OnHoverTexture?.Invoke((hit_info.point, pixel_pos));
 				}
 			}

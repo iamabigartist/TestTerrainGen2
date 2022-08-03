@@ -55,12 +55,25 @@ namespace Utils
 				p.y < 0 || p.y > Size.y - 1;
 		}
 
-		public int2 Sample(float u, float v)
+		public bool IsEdge(int2 p)
+		{
+			return
+				p.x == 0 || p.x == Size.x - 1 ||
+				p.y == 0 || p.y == Size.y - 1;
+		}
+
+		public int2 SampleUV(float u, float v)
 		{
 			return (int2)round(new float2(Size.x * u - 0.5f, Size.y * v - 0.5f));
 		}
-		
-		
+
+		public int2 RepeatWrap(int2 p)
+		{
+			var result = p;
+			if (p.x >= Size.x) { result.x -= Size.x; }
+			if (p.y >= Size.y) { result.y -= Size.y; }
+			return result;
+		}
 
 	#endregion
 	}

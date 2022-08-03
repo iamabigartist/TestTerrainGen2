@@ -30,13 +30,16 @@ namespace JobTerrainGen.EnlargeFractal
 			var result_pos10 = result_pos00 + new int2(1, 0);
 			var result_pos01 = result_pos00 + new int2(0, 1);
 			var result_pos11 = result_pos00 + new int2(1, 1);
-			
+
 			var seed00 = data[i_pixel];
-			bool out10 = i.OutOfRange(seed_pos10);
-			bool out01 = i.OutOfRange(seed_pos01);
-			var seed10 = out10 ? 0 : data[i[seed_pos10]];
-			var seed01 = out01 ? 0 : data[i[seed_pos01]];
-			var seed11 = out10 || out01 ? 0 : data[i[seed_pos11]];
+			// bool out10 = i.OutOfRange(seed_pos10);
+			// bool out01 = i.OutOfRange(seed_pos01);
+			// var seed10 = out10 ? 0 : data[i[seed_pos10]];
+			// var seed01 = out01 ? 0 : data[i[seed_pos01]];
+			// var seed11 = out10 || out01 ? 0 : data[i[seed_pos11]];
+			var seed10 = data[i[i.RepeatWrap(seed_pos10)]];
+			var seed01 = data[i[i.RepeatWrap(seed_pos01)]];
+			var seed11 = data[i[i.RepeatWrap(seed_pos11)]];
 
 			rand_gen.GenRand(i_pixel, out var rand);
 			sampler.Sample(rand,

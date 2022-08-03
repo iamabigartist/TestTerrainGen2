@@ -354,15 +354,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentResultSize:
-    x: 256
-    y: 256
+    x: 128
+    y: 128
   Tester: {fileID: 439395532}
   rand_seed: 1241432397
   seed_size:
     x: 8
     y: 8
-  land_ratio: 0.3
-  enlarge_stages: 0000000001000000000000000000000000000000
+  land_ratio: 1
+  enlarge_stages: 00000000010000000000000000000000
 --- !u!1 &1230241113
 GameObject:
   m_ObjectHideFlags: 0

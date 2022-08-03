@@ -15,7 +15,8 @@ namespace JobTerrainGen.View
 
 		[Tooltip("Current result texture size after apply all the terrain process")]
 		public int2 CurrentResultSize;
-		public int2 ResultSize => seed_size * (int)math.pow(2, enlarge_count);
+		public int EnlargeScale => (int)math.pow(2, enlarge_count);
+		public int2 ResultSize => seed_size * EnlargeScale;
 
 	#endregion
 
