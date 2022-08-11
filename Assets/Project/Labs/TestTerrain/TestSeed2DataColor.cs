@@ -29,7 +29,6 @@ namespace Labs.TestTerrain
 		{
 			var jh = new JobHandle();
 			Plan<GenSeedRand>(new(out var data, seed_size.area(), rand_seed), ref jh);
-			// GenSeedData.Plan(out var data, seed_size.area(), ref jh);
 			PlaneUtil.EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
 			SeedDataToColorRand.Plan(results.Last(), out var result_color, ref jh);
 			jh.Complete();
