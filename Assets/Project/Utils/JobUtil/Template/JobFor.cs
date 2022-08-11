@@ -2,13 +2,6 @@
 using Unity.Jobs;
 namespace Utils.JobUtil.Template
 {
-	public interface IJobForRunner
-	{
-		int ExecuteLen { get; }
-		int InnerLoopBatchCount { get; }
-		void Execute(int i);
-	}
-
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
 		CompileSynchronously = true)]
@@ -20,10 +13,17 @@ namespace Utils.JobUtil.Template
 		{
 			runner.Execute(i);
 		}
-		public static void Plan(TJobForRunner Runner, ref JobHandle deps)
+	}
+	public interface IJobForRunner
+	{
+		(int ExecuteLen, int InnerLoopBatchCount) ScheduleParam { get; }
+		void Execute(int i);
+		public static void Plan<TJobForRunner>(TJobForRunner Runner, ref JobHandle deps)
+			where TJobForRunner : IJobForRunner
 		{
 			var job = new JobFor<TJobForRunner>() { runner = Runner };
-			deps = job.ScheduleParallel(Runner.ExecuteLen, Runner.InnerLoopBatchCount, deps);
+			var (execute_len, inner_loop_batch_count) = Runner.ScheduleParam;
+			deps = job.ScheduleParallel(execute_len, inner_loop_batch_count, deps);
 		}
 	}
 }

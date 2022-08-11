@@ -8,6 +8,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using Utils;
+using static Utils.JobUtil.Template.IJobForRunner;
 namespace Labs.TestTerrain
 {
 	public class TestSeed2DataColor : TerrainDataTester
@@ -27,8 +28,8 @@ namespace Labs.TestTerrain
 		protected override void Run()
 		{
 			var jh = new JobHandle();
-			// JobFor<GenSeedRand>.Plan(new(out var data, seed_size.area(), rand_seed), ref jh);
-			GenSeedData.Plan(out var data, seed_size.area(), ref jh);
+			Plan<GenSeedRand>(new(out var data, seed_size.area(), rand_seed), ref jh);
+			// GenSeedData.Plan(out var data, seed_size.area(), ref jh);
 			PlaneUtil.EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
 			SeedDataToColorRand.Plan(results.Last(), out var result_color, ref jh);
 			jh.Complete();
