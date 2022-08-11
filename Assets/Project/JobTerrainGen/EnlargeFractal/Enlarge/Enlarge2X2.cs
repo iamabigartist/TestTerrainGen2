@@ -4,7 +4,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Utils;
-namespace JobTerrainGen.EnlargeFractal
+namespace JobTerrainGen.EnlargeFractal.Enlarge
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
@@ -41,7 +41,7 @@ namespace JobTerrainGen.EnlargeFractal
 			var seed01 = data[i[i.RepeatWrap(seed_pos01)]];
 			var seed11 = data[i[i.RepeatWrap(seed_pos11)]];
 
-			rand_gen.GenRand(i_pixel, out var rand);
+			rand_gen.Gen(i_pixel, out var rand);
 			sampler.Sample(rand,
 				seed00, seed10, seed01, seed11,
 				out var result00, out var result10, out var result01, out var result11);

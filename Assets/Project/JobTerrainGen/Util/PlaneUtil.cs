@@ -1,4 +1,4 @@
-﻿using JobTerrainGen.EnlargeFractal;
+﻿using JobTerrainGen.EnlargeFractal.Enlarge;
 using JobTerrainGen.EnlargeFractal.Samplers;
 using JobTerrainGen.Pipeline;
 using Unity.Collections;
@@ -13,7 +13,7 @@ namespace JobTerrainGen.Util
 			var stage_count = EnlargeStages.Length;
 			Results = new NativeArray<int>[stage_count];
 			var rand = Random.CreateFromIndex(plan_rand_seed);
-			
+
 			for (int i = 0; i < stage_count; i++)
 			{
 				var stage_rand_seed = rand.NextUInt();

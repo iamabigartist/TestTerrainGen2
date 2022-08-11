@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using JobTerrainGen.EnlargeFractal;
+using JobTerrainGen.EnlargeFractal.Seed;
 using JobTerrainGen.Pipeline;
 using JobTerrainGen.Util;
 using JobTerrainGen.View;
@@ -27,6 +27,7 @@ namespace Labs.TestTerrain
 		protected override void Run()
 		{
 			var jh = new JobHandle();
+			// JobFor<GenSeedRand>.Plan(new(out var data, seed_size.area(), rand_seed), ref jh);
 			GenSeedData.Plan(out var data, seed_size.area(), ref jh);
 			PlaneUtil.EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
 			SeedDataToColorRand.Plan(results.Last(), out var result_color, ref jh);

@@ -1,7 +1,7 @@
 ﻿using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
-using static Utils.JobUtil;
+using static Utils.JobUtil.Utils;
 namespace JobTerrainGen.EnlargeFractal.Area
 {
 	public static class GenAreaIdArray

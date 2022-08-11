@@ -15,6 +15,6 @@ namespace Utils
 		{
 			return seed ^ i;
 		}
-		public void GenRand(int i, out Random rand) { rand = Random.CreateFromIndex(ResultIndex_Multiply((uint)i)); }
+		public void Gen(int i, out Random rand) { rand = Random.CreateFromIndex(ResultIndex_Multiply((uint)i)); }
 	}
 }

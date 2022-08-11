@@ -1,6 +1,7 @@
 using System.Linq;
-using JobTerrainGen.EnlargeFractal;
 using JobTerrainGen.EnlargeFractal.Area;
+using JobTerrainGen.EnlargeFractal.Seed;
+using JobTerrainGen.EnlargeFractal.Transform;
 using JobTerrainGen.Land;
 using JobTerrainGen.Pipeline;
 using JobTerrainGen.View;

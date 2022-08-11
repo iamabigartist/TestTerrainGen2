@@ -3,7 +3,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Utils;
-namespace JobTerrainGen.EnlargeFractal
+namespace JobTerrainGen.EnlargeFractal.Seed
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,

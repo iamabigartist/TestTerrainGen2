@@ -1,7 +1,7 @@
 ﻿using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
-namespace JobTerrainGen.EnlargeFractal
+namespace JobTerrainGen.EnlargeFractal.Seed
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
