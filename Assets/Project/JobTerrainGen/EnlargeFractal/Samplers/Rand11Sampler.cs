@@ -1,7 +1,9 @@
-﻿using Unity.Mathematics;
+﻿using System.Runtime.InteropServices;
+using Unity.Mathematics;
 using Utils;
 namespace JobTerrainGen.EnlargeFractal.Samplers
 {
+	[StructLayout(LayoutKind.Sequential)]
 	public struct Rand11Sampler : IEnlargeSampler
 	{
 		public void Sample(Random rand, int seed00, int seed10, int seed01, int seed11, out int result00, out int result10, out int result01, out int result11)

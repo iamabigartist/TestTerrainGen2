@@ -13,15 +13,14 @@ namespace Utils.JobUtil.Template
 		{
 			runner.Execute();
 		}
-	}
-	public interface IJobRunner
-	{
-		void Execute();
-		public static void Plan<TJobRunner>(TJobRunner Runner, ref JobHandle deps)
-			where TJobRunner : IJobRunner
+		public static void Plan(TJobRunner Runner, ref JobHandle deps)
 		{
 			var job = new Job<TJobRunner>() { runner = Runner };
 			deps = job.Schedule(deps);
 		}
+	}
+	public interface IJobRunner
+	{
+		void Execute();
 	}
 }

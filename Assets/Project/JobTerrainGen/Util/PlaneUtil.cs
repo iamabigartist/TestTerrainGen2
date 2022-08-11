@@ -4,7 +4,7 @@ using JobTerrainGen.Pipeline;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-using static Utils.JobUtil.Template.IJobForRunner;
+using Utils.JobUtil.Template;
 namespace JobTerrainGen.Util
 {
 	public static class PlaneUtil
@@ -22,12 +22,12 @@ namespace JobTerrainGen.Util
 				{
 					case TerrainGenStage.NormalEnlarge:
 						{
-							Plan<Enlarge2X2<Compare11Sampler>>(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
+							JobFor<Enlarge2X2<Compare11Sampler>>.Plan(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
 						}
 						break;
 					case TerrainGenStage.SawtoothEnlarge:
 						{
-							Plan<Enlarge2X2<Rand11Sampler>>(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
+							JobFor<Enlarge2X2<Rand11Sampler>>.Plan(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
 						}
 						break;
 					default: throw new();
