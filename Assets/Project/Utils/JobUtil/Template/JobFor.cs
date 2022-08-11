@@ -13,17 +13,17 @@ namespace Utils.JobUtil.Template
 		{
 			runner.Execute(i);
 		}
-		public static void Plan(TJobForRunner Runner, ref JobHandle deps)
+		public static void Plan(TJobForRunner Runner, ref JobHandle Deps)
 		{
 			var job = new JobFor<TJobForRunner>() { runner = Runner };
 			var (execute_len, inner_loop_batch_count) = Runner.ScheduleParam;
-			deps = job.ScheduleParallel(execute_len, inner_loop_batch_count, deps);
+			Deps = job.ScheduleParallel(execute_len, inner_loop_batch_count, Deps);
 		}
 	}
 	public interface IJobForRunner
 	{
 		(int ExecuteLen, int InnerLoopBatchCount) ScheduleParam { get; }
-		void Execute(int i);
+		void Execute(int i_pixel);
 
 	}
 }

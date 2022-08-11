@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using JobTerrainGen.EnlargeFractal.Seed;
 using JobTerrainGen.Pipeline;
-using JobTerrainGen.Util;
 using JobTerrainGen.View;
 using Unity.Collections;
 using Unity.Jobs;
@@ -9,6 +8,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using Utils;
 using Utils.JobUtil.Template;
+using static JobTerrainGen.Util.PlaneUtil;
 namespace Labs.TestTerrain
 {
 	public class TestSeed2DataColor : TerrainDataTester
@@ -28,9 +28,9 @@ namespace Labs.TestTerrain
 		protected override void Run()
 		{
 			var jh = new JobHandle();
-			JobFor<GenSeedRand>.Plan(new(out var data, seed_size.area(), rand_seed), ref jh);
-			PlaneUtil.EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
-			SeedDataToColorRand.Plan(results.Last(), out var result_color, ref jh);
+			JobFor<GenSeed>.Plan(new(out var data, seed_size.area()), ref jh);
+			EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
+			JobFor<SeedDataToColorRand>.Plan(new(results.Last(), out var result_color), ref jh);
 			jh.Complete();
 			MarkCoordinate(result_color);
 			ApplyResultToTexture(result_color.Slice(), 0);

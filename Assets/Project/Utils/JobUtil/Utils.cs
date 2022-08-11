@@ -3,6 +3,7 @@ namespace Utils.JobUtil
 {
 	public static class Utils
 	{
+		public delegate void DataModify<TData>(ref TData data);
 		public delegate void ResultGen<TResult>(out TResult result);
 		public static void Dispose<TDisposable>(this TDisposable[] array)
 			where TDisposable : IDisposable

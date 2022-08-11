@@ -10,6 +10,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using Utils;
+using Utils.JobUtil.Template;
 using static JobTerrainGen.Pipeline.TerrainGenStage;
 using static JobTerrainGen.Util.PlaneUtil;
 namespace Labs.TestTerrain
@@ -33,21 +34,22 @@ namespace Labs.TestTerrain
 		protected override void Run()
 		{
 			var jh = new JobHandle();
-			GenSeedDataWithAroundOcean.Plan(out var seed_data, seed_size, ref jh);
+			// GenSeedDataWithAroundOcean.Plan(out var seed_data, seed_size, ref jh);
 			// GenSeedData.Plan(out var seed_data, seed_size.area(), ref jh);
+			JobFor<GenSeedWithAroundOcean>.Plan(new(out var seed_data, seed_size), ref jh);
 			EnlargePlan(seed_data, seed_size, out var area_results, enlarge_stages, rand_seed, ref jh);
 			var enlarge_result = area_results.Last();
 			var shift = new int2(1, 1) * (EnlargeScale / 2);
-			RotateShift.Plan(enlarge_result, ResultSize, shift, out var area_data, ref jh);
-			GenAreaIdArray.Plan(area_data, out var gen_area_ids, ref jh);
+			JobFor<RotateShift>.Plan(new(enlarge_result, ResultSize, shift, out var area_data), ref jh);
+			JobFor<GenAreaIdArray>.Plan(new(area_data, out var gen_area_ids, LandData.LandAreaIdSetModify), ref jh);
 			jh.Complete();
 			gen_area_ids(out var area_ids);
-			AreaToOceanLandRandomSelect.Run(area_ids, land_ratio, rand_seed, out var area_landforms);
-			GenOceanLandAreaColor.Plan(area_ids, area_landforms, Color.blue.f3(), out var area_colors, ref jh);
+			AreaToOceanLandRandomSelect.Run(area_ids, land_ratio, rand_seed, out var land_by_area_id);
+			JobFor<LandAreaToColor>.Plan(new(area_ids, land_by_area_id, Color.blue.f3(), out var area_colors), ref jh);
 			DataToColorByTable.Plan(area_data, area_colors, out var rgb, ref jh);
 			jh.Complete();
 			ApplyResultToTexture(rgb.Slice(), 0);
-			PlanDispose(seed_data, area_results, area_data, area_ids, area_landforms, area_colors, rgb);
+			PlanDispose(seed_data, area_results, area_data, area_ids, land_by_area_id, area_colors, rgb);
 		}
 	}
 }

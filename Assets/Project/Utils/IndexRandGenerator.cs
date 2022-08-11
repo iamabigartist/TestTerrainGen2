@@ -7,7 +7,7 @@ namespace Utils
 	public struct IndexRandGenerator
 	{
 		public uint seed;
-		public IndexRandGenerator(uint seed)
+		public IndexRandGenerator(uint seed = 0)
 		{
 			this.seed = seed;
 		}

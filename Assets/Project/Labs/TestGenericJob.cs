@@ -16,7 +16,7 @@ namespace Labs
 	{
 		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (10, 1);
 		TInner inner;
-		public void Execute(int i) {}
+		public void Execute(int i_pixel) {}
 		public GenericRunner(TInner inner, int len)
 		{
 			this.inner = inner;

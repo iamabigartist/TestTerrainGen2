@@ -44,16 +44,16 @@ namespace JobTerrainGen.EnlargeFractal.Enlarge
 			data_2[i_2[result_pos11]] = result11;
 		}
 
-		public Enlarge2X2(NativeArray<int> data, int2 size, out NativeArray<int> data_2, TEnlargeSampler sampler, uint rand_seed)
+		public Enlarge2X2(NativeArray<int> Source, int2 Size, out NativeArray<int> Result, TEnlargeSampler Sampler, uint RandSeed)
 		{
-			var size_2 = size * 2;
-			rand_gen = new(rand_seed);
-			i = new(size);
+			var size_2 = Size * 2;
+			rand_gen = new(RandSeed);
+			i = new(Size);
 			i_2 = new(size_2);
-			this.data = data;
-			this.sampler = sampler;
-			this.data_2 = new(size_2.area(), Allocator.TempJob);
-			data_2 = this.data_2;
+			data = Source;
+			sampler = Sampler;
+			data_2 = new(size_2.area(), Allocator.TempJob);
+			Result = data_2;
 		}
 	}
 }
