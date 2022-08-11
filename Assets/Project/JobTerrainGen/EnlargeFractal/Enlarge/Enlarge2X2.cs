@@ -1,16 +1,14 @@
-﻿using System.Runtime.InteropServices;
-using JobTerrainGen.EnlargeFractal.Samplers;
+﻿using JobTerrainGen.EnlargeFractal.Samplers;
 using Unity.Collections;
 using Unity.Mathematics;
 using Utils;
 using Utils.JobUtil.Template;
 namespace JobTerrainGen.EnlargeFractal.Enlarge
 {
-	[StructLayout(LayoutKind.Sequential)]
 	public struct Enlarge2X2<TEnlargeSampler> : IJobForRunner
 		where TEnlargeSampler : struct, IEnlargeSampler
 	{
-		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam { get; }
+		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (i.Count, 4);
 
 		IndexRandGenerator rand_gen;
 		Index2D i;
@@ -48,7 +46,6 @@ namespace JobTerrainGen.EnlargeFractal.Enlarge
 
 		public Enlarge2X2(NativeArray<int> data, int2 size, out NativeArray<int> data_2, TEnlargeSampler sampler, uint rand_seed)
 		{
-			ScheduleParam = (size.area(), 1);
 			var size_2 = size * 2;
 			rand_gen = new(rand_seed);
 			i = new(size);

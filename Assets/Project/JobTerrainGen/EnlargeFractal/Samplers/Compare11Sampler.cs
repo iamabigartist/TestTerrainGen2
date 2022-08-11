@@ -1,10 +1,8 @@
-﻿using System.Runtime.InteropServices;
-using Unity.Collections;
+﻿using Unity.Collections;
 using Unity.Mathematics;
 using Utils;
 namespace JobTerrainGen.EnlargeFractal.Samplers
 {
-	[StructLayout(LayoutKind.Sequential)]
 	public struct Compare11Sampler : IEnlargeSampler
 	{
 		static void AddOptionSeed(ref NativeList<int> seed_array, ref NativeList<int> count_array, int seed)
@@ -20,6 +18,7 @@ namespace JobTerrainGen.EnlargeFractal.Samplers
 				count_array[seed_i]++;
 			}
 		}
+
 		public void Sample(Random rand, int seed00, int seed10, int seed01, int seed11, out int result00, out int result10, out int result01, out int result11)
 		{
 			result00 = seed00;

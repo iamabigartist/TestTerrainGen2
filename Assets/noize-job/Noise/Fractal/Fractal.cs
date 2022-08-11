@@ -166,7 +166,6 @@ namespace xshazwar.noize.cpu.mutate
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public float NoiseValue(float x, float z)
 		{
-
 			float2 coord = float2(x, z);
 			float2 v = 0.5f + 0.5f * sin(coord);
 			return v.x * v.y;

@@ -6,7 +6,7 @@ namespace Utils.JobUtil.Template
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
 		CompileSynchronously = true)]
 	public struct Job<TJobRunner> : IJob
-		where TJobRunner : IJobRunner
+		where TJobRunner : struct, IJobRunner
 	{
 		public TJobRunner runner;
 		public void Execute()

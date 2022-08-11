@@ -1,14 +1,12 @@
-﻿using System.Runtime.InteropServices;
-using Unity.Burst;
+﻿using Unity.Burst;
 using Unity.Jobs;
 namespace Utils.JobUtil.Template
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,
 		CompileSynchronously = true)]
-	[StructLayout(LayoutKind.Sequential)]
 	public struct JobFor<TJobForRunner> : IJobFor
-		where TJobForRunner : IJobForRunner
+		where TJobForRunner : struct, IJobForRunner
 	{
 		public TJobForRunner runner;
 		public void Execute(int i)

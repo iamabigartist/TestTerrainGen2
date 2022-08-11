@@ -5,7 +5,7 @@ namespace JobTerrainGen.EnlargeFractal.Seed
 {
 	public struct GenSeedRand : IJobForRunner
 	{
-		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam { get; }
+		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (data.Length, 1024);
 
 		IndexRandGenerator rand_gen;
 		NativeArray<int> data;
@@ -16,7 +16,6 @@ namespace JobTerrainGen.EnlargeFractal.Seed
 		}
 		public GenSeedRand(out NativeArray<int> data, int length, uint rand_seed)
 		{
-			ScheduleParam = (length, 1024);
 			this.data = new(length, Allocator.TempJob);
 			rand_gen = new(rand_seed);
 			data = this.data;
