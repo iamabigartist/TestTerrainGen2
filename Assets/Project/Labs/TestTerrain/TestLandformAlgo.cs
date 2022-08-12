@@ -1,5 +1,6 @@
 using System.Linq;
 using JobTerrainGen.EnlargeFractal.Area;
+using JobTerrainGen.EnlargeFractal.Samplers;
 using JobTerrainGen.EnlargeFractal.Seed;
 using JobTerrainGen.EnlargeFractal.Transform;
 using JobTerrainGen.Land;
@@ -11,7 +12,6 @@ using Unity.Mathematics;
 using UnityEngine;
 using Utils;
 using Utils.JobUtil.Template;
-using static JobTerrainGen.Pipeline.TerrainGenStage;
 using static JobTerrainGen.Util.PlaneUtil;
 namespace Labs.TestTerrain
 {
@@ -19,23 +19,21 @@ namespace Labs.TestTerrain
 	{
 		public float land_ratio;
 
-		protected override int enlarge_count => enlarge_stages.Length;
+		public override int enlarge_count => enlarge_stages.Length;
 
 		public TerrainGenStage[] enlarge_stages =
 		{
-			NormalEnlarge,
-			SawtoothEnlarge,
-			NormalEnlarge,
-			NormalEnlarge,
-			NormalEnlarge
+			new NormalEnlarge(),
+			new SawtoothEnlarge(),
+			new NormalEnlarge(),
+			new NormalEnlarge(),
+			new NormalEnlarge()
 		};
 
 		[ContextMenu("Run")]
 		protected override void Run()
 		{
 			var jh = new JobHandle();
-			// GenSeedDataWithAroundOcean.Plan(out var seed_data, seed_size, ref jh);
-			// GenSeedData.Plan(out var seed_data, seed_size.area(), ref jh);
 			JobFor<GenSeedWithAroundOcean>.Plan(new(out var seed_data, seed_size), ref jh);
 			EnlargePlan(seed_data, seed_size, out var area_results, enlarge_stages, rand_seed, ref jh);
 			var enlarge_result = area_results.Last();

@@ -302,14 +302,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentResultSize:
-    x: 512
-    y: 512
+    x: 0
+    y: 0
   Tester: {fileID: 439395532}
-  rand_seed: 1230
+  rand_seed: 0
   seed_size:
-    x: 16
-    y: 16
-  stage_list: 0000000001000000010000000000000000000000
+    x: 0
+    y: 0
 --- !u!1 &1092906456
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,15 +355,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentResultSize:
-    x: 512
-    y: 512
+    x: 256
+    y: 256
   Tester: {fileID: 1880058034}
   rand_seed: 3024677790
   seed_size:
     x: 8
     y: 8
   land_ratio: 0.3
-  enlarge_stages: 000000000100000000000000000000000000000000000000
 --- !u!1 &1230241113
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,12 +20,12 @@ namespace JobTerrainGen.Util
 				var stage_rand_seed = rand.NextUInt();
 				switch (EnlargeStages[i])
 				{
-					case TerrainGenStage.NormalEnlarge:
+					case NormalEnlarge:
 						{
 							JobFor<Enlarge2X2<Compare11Sampler>>.Plan(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
 						}
 						break;
-					case TerrainGenStage.SawtoothEnlarge:
+					case SawtoothEnlarge:
 						{
 							JobFor<Enlarge2X2<Rand11Sampler>>.Plan(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
 						}

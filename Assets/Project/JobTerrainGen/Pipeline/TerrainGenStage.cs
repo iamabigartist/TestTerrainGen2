@@ -1,8 +1,6 @@
-﻿namespace JobTerrainGen.Pipeline
+﻿using System;
+namespace JobTerrainGen.Pipeline
 {
-	public enum TerrainGenStage
-	{
-		NormalEnlarge,
-		SawtoothEnlarge
-	}
+	[Serializable]
+	public class TerrainGenStage {}
 }

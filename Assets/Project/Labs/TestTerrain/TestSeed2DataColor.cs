@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using JobTerrainGen.EnlargeFractal.Samplers;
 using JobTerrainGen.EnlargeFractal.Seed;
 using JobTerrainGen.Pipeline;
 using JobTerrainGen.View;
@@ -13,9 +14,19 @@ namespace Labs.TestTerrain
 {
 	public class TestSeed2DataColor : TerrainDataTester
 	{
-		protected override int enlarge_count => stage_list.Length;
+		public override int enlarge_count => stage_list.Length;
 
-		public TerrainGenStage[] stage_list;
+		[SerializeReference]
+		[SerializeReferenceButton]
+		public TerrainGenStage[] stage_list =
+		{
+			new NormalEnlarge(),
+			new SawtoothEnlarge(),
+			new NormalEnlarge(),
+			new NormalEnlarge(),
+			new NormalEnlarge()
+		};
+
 		void MarkCoordinate(NativeArray<float3> result_color)
 		{
 			var i = new Index2D(ResultSize);
@@ -29,7 +40,7 @@ namespace Labs.TestTerrain
 		{
 			var jh = new JobHandle();
 			JobFor<GenSeed>.Plan(new(out var data, seed_size.area()), ref jh);
-			EnlargePlan(data, seed_size, out var results, stage_list, rand_seed, ref jh);
+			EnlargePlan(data, seed_size, out var results, stage_list.ToArray(), rand_seed, ref jh);
 			JobFor<SeedDataToColorRand>.Plan(new(results.Last(), out var result_color), ref jh);
 			jh.Complete();
 			MarkCoordinate(result_color);

@@ -1,8 +1,13 @@
-﻿using Unity.Collections;
-using Unity.Mathematics;
+﻿using System;
+using JobTerrainGen.Pipeline;
+using Unity.Collections;
 using Utils;
+using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.EnlargeFractal.Samplers
 {
+	[Serializable]
+	public class NormalEnlarge : TerrainGenStage {}
+
 	public struct Compare11Sampler : IEnlargeSampler
 	{
 		static void AddOptionSeed(ref NativeList<int> seed_array, ref NativeList<int> count_array, int seed)

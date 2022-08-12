@@ -32,6 +32,7 @@ namespace JobTerrainGen.View
 		public int2 seed_size;
 
 	#endregion
+
 	#region Data
 
 		List<IDisposable> dispose_list = new();
@@ -40,7 +41,7 @@ namespace JobTerrainGen.View
 
 	#region Template
 
-		protected abstract int enlarge_count { get; }
+		public abstract int enlarge_count { get; }
 		protected abstract void Run();
 
 	#endregion
