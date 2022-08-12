@@ -1,5 +1,6 @@
-﻿using Unity.Collections;
-using Unity.Mathematics;
+﻿using System;
+using Unity.Collections;
+using Random = Unity.Mathematics.Random;
 namespace Utils
 {
 	public static class RandomUtil
@@ -26,10 +27,11 @@ namespace Utils
 			{
 				0 => a,
 				1 => b,
-				2 => c
+				2 => c,
+				_ => throw new ArgumentOutOfRangeException()
 			};
 		}
-		
+
 		public static T Select4<T>(this Random rand, T a, T b, T c, T d) where T : struct
 		{
 			var select_index = rand.NextInt(4);
@@ -38,7 +40,8 @@ namespace Utils
 				0 => a,
 				1 => b,
 				2 => c,
-				3 => d
+				3 => d,
+				_ => throw new ArgumentOutOfRangeException()
 			};
 		}
 

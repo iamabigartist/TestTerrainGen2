@@ -7,14 +7,7 @@
       "dependencies": {
         "com.unity.mathematics": "1.2.5"
       },
-      "hash": "0dd0329a6e7b043e8ae4c840fed3db30c5ded975"
-    },
-    "com.textus-games.serialized-reference-ui": {
-      "version": "https://github.com/TextusGames/UnitySerializedReferenceUI.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "51aff6062610296c86f739a3e093c29d08388a95"
+      "hash": "226c1ab2893ecea80e80fa062f547d6964ffba77"
     },
     "com.unity.burst": {
       "version": "1.7.3",
@@ -23,13 +16,6 @@
       "dependencies": {
         "com.unity.mathematics": "1.2.1"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.cinemachine": {
-      "version": "2.8.6",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
@@ -130,7 +116,7 @@
     },
     "com.unity.test-framework": {
       "version": "1.1.31",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6",
@@ -145,18 +131,6 @@
       "source": "registry",
       "dependencies": {
         "com.unity.ugui": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.timeline": {
-      "version": "1.7.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.director": "1.0.0",
-        "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.particlesystem": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },

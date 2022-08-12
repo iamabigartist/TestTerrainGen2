@@ -5,7 +5,7 @@ namespace Labs
 	[Serializable]
 	public class Animal : ScriptableObject
 	{
-		public string name;
+		public string m_name;
 	}
 
 	[Serializable]

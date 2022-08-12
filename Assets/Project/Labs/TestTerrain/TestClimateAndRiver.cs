@@ -1,10 +1,14 @@
-﻿using JobTerrainGen.View;
+﻿using System;
+using JobTerrainGen.View;
+using Unity.Collections;
+using Unity.Mathematics;
 namespace Labs.TestTerrain
 {
 	public class TestClimateAndRiver : TerrainDataTester
 	{
-
-		public override int enlarge_count { get; }
-		protected override void Run() {}
+		protected override void OnGenerate(out int2 TextureResultSize, out NativeArray<float3> ResultRGB, out float Alpha)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

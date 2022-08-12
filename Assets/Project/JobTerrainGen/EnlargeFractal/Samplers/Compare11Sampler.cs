@@ -1,12 +1,11 @@
 ﻿using System;
-using JobTerrainGen.Pipeline;
 using Unity.Collections;
 using Utils;
 using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.EnlargeFractal.Samplers
 {
 	[Serializable]
-	public class NormalEnlarge : TerrainGenStage {}
+	public class NormalEnlargeStage : Enlarge2X2Stage {}
 
 	public struct Compare11Sampler : IEnlargeSampler
 	{

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JobTerrainGen.EnlargeFractal.Samplers;
+using JobTerrainGen.Pipeline;
+using PrototypeUtils;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -10,13 +13,10 @@ namespace JobTerrainGen.View
 {
 	public abstract class TerrainDataTester : MonoBehaviour
 	{
-
-	#region Property
+	#region View
 
 		[Tooltip("Current result texture size after apply all the terrain process")]
-		public int2 CurrentResultSize;
-		public int EnlargeScale => (int)math.pow(2, enlarge_count);
-		public int2 ResultSize => seed_size * EnlargeScale;
+		public int2 CurrentTerrainResultSize;
 
 	#endregion
 
@@ -33,20 +33,43 @@ namespace JobTerrainGen.View
 
 	#endregion
 
+	#region Property
+
+		public int2 TerrainResultSize => TerrainGenStage.GetResultSize(seed_size, stage_list);
+		public int EnlargeScale => (TerrainResultSize / seed_size).x; //Assume the ratio doesn't change
+
+	#endregion
+
 	#region Data
 
-		List<IDisposable> dispose_list = new();
+		[SerializeReference] [PolymorphicSelect]
+		public TerrainGenStage[] stage_list =
+		{
+			new NormalEnlargeStage(),
+			new SawtoothEnlarge(),
+			new NormalEnlargeStage(),
+			new NormalEnlargeStage(),
+			new NormalEnlargeStage()
+		};
 
 	#endregion
 
 	#region Template
 
-		public abstract int enlarge_count { get; }
-		protected abstract void Run();
+		protected abstract void OnGenerate(out int2 TextureResultSize, out NativeArray<float3> ResultRGB, out float Alpha);
 
 	#endregion
 
 	#region Process
+
+		void CleanGenerate()
+		{
+			Dispose();
+		}
+
+	#region Dispose
+
+		List<IDisposable> dispose_list = new();
 
 		void Dispose()
 		{
@@ -72,11 +95,18 @@ namespace JobTerrainGen.View
 			}
 		}
 
-		protected void ApplyResultToTexture<TStride>(NativeSlice<TStride> result_color, int float_offset_count) where TStride : struct
+	#endregion
+
+		void ApplyResultToTexture(int2 TextureResultSize, NativeSlice<float3> ResultRGB, float Alpha)
 		{
-			Tester.InitTexture(ResultSize);
-			Tester.GetTextureSlice<TStride>(out var texture_slice, float_offset_count);
-			texture_slice.CopyFrom(result_color);
+			Tester.InitTexture(TextureResultSize);
+
+			Tester.GetTextureSlice<float3>(out var rgb_slice, 0);
+			rgb_slice.CopyFrom(ResultRGB);
+
+			Tester.GetTextureSlice<float>(out var alpha_slice, 3);
+			alpha_slice.CopyFrom(Enumerable.Repeat(Alpha, alpha_slice.Length).ToArray());
+
 			Tester.ApplyTexture();
 		}
 
@@ -84,26 +114,28 @@ namespace JobTerrainGen.View
 
 	#region UnityEntry
 
+		protected void OnValidate()
+		{
+			CurrentTerrainResultSize = TerrainResultSize;
+		}
+
+		protected void Start() { Run(); }
+		protected void Reset() { CleanGenerate(); }
+		protected void OnDestroy() { CleanGenerate(); }
+
+		[ContextMenu("Run")]
+		void Run()
+		{
+			OnGenerate(out var texture_result_size, out var result_rgb, out var alpha);
+			ApplyResultToTexture(texture_result_size, result_rgb, alpha);
+			CleanGenerate();
+		}
+
 		[ContextMenu("RandRun")]
 		void RandRun()
 		{
 			rand_seed = Random.CreateFromIndex(rand_seed).NextUInt();
 			Run();
-		}
-
-		protected void Start()
-		{
-			Run();
-		}
-
-		protected void OnValidate()
-		{
-			CurrentResultSize = ResultSize;
-		}
-
-		protected void OnDestroy()
-		{
-			Dispose();
 		}
 
 	#endregion

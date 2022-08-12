@@ -13,7 +13,7 @@ namespace Labs
 
 		public void Execute(int index)
 		{
-			// dst[index] = rand.NextInt() % 100;
+			dst[index] = rand.NextInt() % 100;
 			Debug.Log($"{rand.NextInt(100)}");
 		}
 

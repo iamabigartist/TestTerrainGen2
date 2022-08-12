@@ -272,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &836322528
 Transform:
   m_ObjectHideFlags: 0
@@ -301,14 +301,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d19837ac554050b181a77365daa15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentResultSize:
-    x: 0
-    y: 0
+  CurrentTerrainResultSize:
+    x: 512
+    y: 512
   Tester: {fileID: 439395532}
   rand_seed: 0
   seed_size:
-    x: 0
-    y: 0
+    x: 16
+    y: 16
+  stage_list:
+  - rid: 9133313521423482908
+  - rid: 9133313521423482909
+  - rid: 9133313521423482910
+  - rid: 9133313521423482911
+  - rid: 9133313521423482912
+  references:
+    version: 2
+    RefIds:
+    - rid: 9133313521423482908
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313521423482909
+      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: Assembly-CSharp}
+    - rid: 9133313521423482910
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313521423482911
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313521423482912
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
 --- !u!1 &1092906456
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39da31e81c5706c4198c93547258fbcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentResultSize:
+  CurrentTerrainResultSize:
     x: 256
     y: 256
   Tester: {fileID: 1880058034}
@@ -362,7 +385,30 @@ MonoBehaviour:
   seed_size:
     x: 8
     y: 8
+  stage_list:
+  - rid: 9133313521423482903
+  - rid: 9133313521423482904
+  - rid: 9133313521423482905
+  - rid: 9133313521423482906
+  - rid: 9133313521423482907
   land_ratio: 0.3
+  references:
+    version: 2
+    RefIds:
+    - rid: 9133313521423482903
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313521423482904
+      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: Assembly-CSharp}
+    - rid: 9133313521423482905
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313521423482906
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313521423482907
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
 --- !u!1 &1230241113
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ namespace JobTerrainGen.Util
 				var stage_rand_seed = rand.NextUInt();
 				switch (EnlargeStages[i])
 				{
-					case NormalEnlarge:
+					case NormalEnlargeStage:
 						{
 							JobFor<Enlarge2X2<Compare11Sampler>>.Plan(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
 						}

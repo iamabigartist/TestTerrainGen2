@@ -1,6 +1,14 @@
-﻿using Unity.Mathematics;
+﻿using System;
+using JobTerrainGen.Pipeline;
+using Unity.Mathematics;
+using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.EnlargeFractal.Samplers
 {
+	[Serializable]
+	public abstract class Enlarge2X2Stage : TerrainGenStage
+	{
+		protected override void ModifySize(ref int2 size) { size *= 2; }
+	}
 	public interface IEnlargeSampler
 	{
 		void Sample(
