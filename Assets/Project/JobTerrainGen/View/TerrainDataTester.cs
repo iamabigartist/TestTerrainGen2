@@ -8,6 +8,7 @@ using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using Utils;
+using Utils.JobUtil;
 using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.View
 {
@@ -69,30 +70,17 @@ namespace JobTerrainGen.View
 
 	#region Dispose
 
-		List<IDisposable> dispose_list = new();
+		List<object> dispose_list = new();
 
 		void Dispose()
 		{
-			foreach (var disposable in dispose_list)
-			{
-				disposable.Dispose();
-			}
+			NativeContainerUtils.Dispose(dispose_list);
 			dispose_list.Clear();
 		}
 
 		protected void PlanDispose(params object[] disposables)
 		{
-			foreach (var obj in disposables)
-			{
-				if (obj is Array array)
-				{
-					dispose_list.AddRange(array.Cast<IDisposable>().ToArray());
-				}
-				else
-				{
-					dispose_list.Add((IDisposable)obj);
-				}
-			}
+			dispose_list.AddRange( disposables);
 		}
 
 	#endregion

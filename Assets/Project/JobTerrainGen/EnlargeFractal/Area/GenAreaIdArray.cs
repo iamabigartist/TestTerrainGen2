@@ -1,6 +1,5 @@
 ﻿using Unity.Collections;
 using Utils.JobUtil.Template;
-using static Utils.JobUtil.Utils;
 namespace JobTerrainGen.EnlargeFractal.Area
 {
 	public struct GenAreaIdArray : IJobForRunner
@@ -13,17 +12,11 @@ namespace JobTerrainGen.EnlargeFractal.Area
 		{
 			id_set_w.Add(data[i_pixel]);
 		}
-		public GenAreaIdArray(NativeArray<int> Source, out ResultGen<NativeArray<int>> GenResult, DataModify<NativeHashSet<int>> ModifySet = null)
+		public GenAreaIdArray(NativeArray<int> Source, out NativeHashSet<int> id_set)
 		{
-			var id_set = new NativeHashSet<int>(Source.Length, Allocator.Persistent);
+			id_set = new(Source.Length, Allocator.Persistent);
 			data = Source;
 			id_set_w = id_set.AsParallelWriter();
-			GenResult = (out NativeArray<int> array) =>
-			{
-				ModifySet?.Invoke(ref id_set);
-				array = id_set.ToNativeArray(Allocator.TempJob);
-				id_set.Dispose();
-			};
 		}
 	}
 }

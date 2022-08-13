@@ -5,9 +5,9 @@ namespace JobTerrainGen.Land
 {
 	public abstract class TerrainData
 	{
-		public int2 init_size;
-		public TerrainGenStage[] stage_list;
 		public NativeArray<int> data;
 		public int2 size;
+
+		public abstract void Generate(int2 InitSize, TerrainGenStage[] GenStages,uint RandSeed);
 	}
 }
