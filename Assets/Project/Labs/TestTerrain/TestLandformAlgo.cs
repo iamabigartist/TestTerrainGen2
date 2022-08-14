@@ -1,8 +1,8 @@
 using System.Linq;
-using JobTerrainGen.EnlargeFractal.Area;
-using JobTerrainGen.EnlargeFractal.Seed;
-using JobTerrainGen.EnlargeFractal.Transform;
+using JobTerrainGen.Area;
 using JobTerrainGen.Land;
+using JobTerrainGen.Seed;
+using JobTerrainGen.Transform;
 using JobTerrainGen.View;
 using Unity.Collections;
 using Unity.Jobs;

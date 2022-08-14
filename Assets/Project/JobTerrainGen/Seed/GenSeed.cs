@@ -1,20 +1,20 @@
 ﻿using Unity.Collections;
 using Utils.JobUtil.Template;
-namespace JobTerrainGen.EnlargeFractal.Seed
+namespace JobTerrainGen.Seed
 {
 	public struct GenSeed : IJobForRunner
 	{
-		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (data.Length, 1024);
+		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (seed_data.Length, 1024);
 
-		NativeArray<int> data;
+		NativeArray<int> seed_data;
 		public void Execute(int i_seed)
 		{
-			data[i_seed] = i_seed + 1;
+			seed_data[i_seed] = i_seed + 1;
 		}
 		public GenSeed(out NativeArray<int> Result, int Length)
 		{
-			data = new(Length, Allocator.TempJob);
-			Result = data;
+			seed_data = new(Length, Allocator.TempJob);
+			Result = seed_data;
 		}
 	}
 }

@@ -55,6 +55,14 @@ namespace Utils
 				SliceWithStride<TSliceStride>(sizeof(float) * float_offset_count);
 		}
 
+		public void SetTextureSlice<TSliceStride>(NativeArray<TSliceStride> Result, int float_offset_count) where TSliceStride : struct
+		{
+			var slice = mTexture.GetRawTextureData<float4>().Slice().
+				SliceWithStride<TSliceStride>(sizeof(float) * float_offset_count);
+			slice.CopyFrom(Result);
+		}
+
+
 		public void ApplyTexture()
 		{
 			mTexture.Apply();

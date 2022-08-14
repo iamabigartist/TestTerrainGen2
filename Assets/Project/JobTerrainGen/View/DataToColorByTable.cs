@@ -14,11 +14,13 @@ namespace JobTerrainGen.View
 		{
 			color[i] = color_table[data[i]];
 		}
+
 		public DataToColorByTable(NativeArray<int> Data, NativeHashMap<int, float3> ColorTable, out NativeArray<float3> ResultColor)
 		{
 			color_table = ColorTable;
 			data = Data;
 			color = new(data.Length, Allocator.TempJob);
+
 			ResultColor = color;
 		}
 	}

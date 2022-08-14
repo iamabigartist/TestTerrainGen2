@@ -5,10 +5,19 @@ namespace Utils
 {
 	public static class RandomUtil
 	{
-		// public static T SelectWithProbability<T>(this Random rand, NativeArray<T> options, NativeArray<float> probabilities) where T : struct
-		// {
-		// 	
-		// }
+		public static int SelectWithProbability(this Random rand, NativeArray<float> weights)
+		{
+			var sum = 0f;
+			foreach (float weight in weights) { sum += weight; }
+			var roll = rand.NextFloat(sum);
+			var cur_weight = 0f;
+			for (int i = 0; i < weights.Length; i++)
+			{
+				cur_weight += weights[i];
+				if (roll <= cur_weight) { return i; }
+			}
+			return weights.Length - 1;
+		}
 		public static T SelectArray<T>(this Random rand, NativeArray<T> options) where T : struct
 		{
 			var select_index = rand.NextInt(options.Length);

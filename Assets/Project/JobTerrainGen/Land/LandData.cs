@@ -1,8 +1,9 @@
 ﻿using System.Linq;
-using JobTerrainGen.EnlargeFractal.Area;
-using JobTerrainGen.EnlargeFractal.Seed;
-using JobTerrainGen.EnlargeFractal.Transform;
+using JobTerrainGen.Area;
+using JobTerrainGen.DataDefinition;
 using JobTerrainGen.Pipeline;
+using JobTerrainGen.Seed;
+using JobTerrainGen.Transform;
 using JobTerrainGen.Util;
 using Unity.Collections;
 using Unity.Jobs;
@@ -13,7 +14,6 @@ namespace JobTerrainGen.Land
 {
 	public class LandData : TerrainData
 	{
-		public static DataModify<NativeHashSet<int>> LandAreaIdSetModify = (ref NativeHashSet<int> set) => set.Remove(0);
 
 	#region Config
 

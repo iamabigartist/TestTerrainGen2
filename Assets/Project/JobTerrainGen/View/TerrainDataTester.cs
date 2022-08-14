@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using JobTerrainGen.EnlargeFractal.Samplers;
 using JobTerrainGen.Pipeline;
@@ -80,7 +79,7 @@ namespace JobTerrainGen.View
 
 		protected void PlanDispose(params object[] disposables)
 		{
-			dispose_list.AddRange( disposables);
+			dispose_list.AddRange(disposables);
 		}
 
 	#endregion

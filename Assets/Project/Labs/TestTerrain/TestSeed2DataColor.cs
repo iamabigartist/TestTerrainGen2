@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using JobTerrainGen.EnlargeFractal.Seed;
+using JobTerrainGen.Seed;
 using JobTerrainGen.View;
 using Unity.Collections;
 using Unity.Jobs;

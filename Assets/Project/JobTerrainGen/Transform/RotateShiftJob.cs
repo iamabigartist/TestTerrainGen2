@@ -2,7 +2,7 @@
 using Unity.Mathematics;
 using Utils;
 using Utils.JobUtil.Template;
-namespace JobTerrainGen.EnlargeFractal.Transform
+namespace JobTerrainGen.Transform
 {
 	public struct RotateShift : IJobForRunner
 	{

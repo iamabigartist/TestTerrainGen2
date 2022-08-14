@@ -302,8 +302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentTerrainResultSize:
-    x: 512
-    y: 512
+    x: 8192
+    y: 8192
   Tester: {fileID: 439395532}
   rand_seed: 0
   seed_size:
@@ -315,6 +315,10 @@ MonoBehaviour:
   - rid: 9133313521423482910
   - rid: 9133313521423482911
   - rid: 9133313521423482912
+  - rid: 9133313545660792832
+  - rid: 9133313545660792836
+  - rid: 9133313545660792837
+  - rid: 9133313545660792838
   references:
     version: 2
     RefIds:
@@ -330,6 +334,18 @@ MonoBehaviour:
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
     - rid: 9133313521423482912
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313545660792832
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313545660792836
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313545660792837
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 9133313545660792838
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
 --- !u!1 &1092906456
@@ -348,7 +364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1092906457
 Transform:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ namespace JobTerrainGen.Pipeline
 			var result_size = InitSize;
 			foreach (var stage in Stages)
 			{
-				stage.ModifySize(ref result_size);
+				stage?.ModifySize(ref result_size);
 			}
 			return result_size;
 		}

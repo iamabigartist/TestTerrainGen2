@@ -11,11 +11,11 @@ namespace JobTerrainGen.View
 	{
 		[ReadOnly] NativeArray<int> data;
 		[WriteOnly] NativeArray<float> color;
-		public void Execute(int i)
+		public void Execute(int i_pixel)
 		{
-			var id = data[i];
+			var id = data[i_pixel];
 			var rand = Random.CreateFromIndex((uint)id);
-			color[i] = rand.NextFloat(1f);
+			color[i_pixel] = rand.NextFloat(1f);
 		}
 
 		public static void Plan(NativeArray<int> data, out NativeArray<float> color, ref JobHandle deps)
