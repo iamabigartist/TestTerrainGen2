@@ -1,31 +1,27 @@
-using Unity.Burst;
-using Unity.Collections;
-using Unity.Jobs;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 namespace Utils
 {
 	public static class TileMapUtil
 	{
-		// public static void MapDataToTileArray(MapData<float> terrain_tile_map,out Tile )
-		// {
-		//     
-		// }
-		[BurstCompile(DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance)]
-		public struct MapDataToHeightTexture : IJobParallelFor
+		public static void DataToTileMap(int[] Data, int2 Size, Dictionary<int, Tile> TileTable, out Vector3Int[] Positions, out Tile[] Tiles)
 		{
-			[ReadOnly] public MapData<float> TerrainTileMap;
-			[WriteOnly] public NativeArray<Color> HeightTexture;
-			public void Execute(int i)
+			int data_len = Data.Length;
+			var i_data = new Index2D(Size);
+			var positions = new Vector3Int[data_len];
+			var tiles = new Tile[data_len];
+			Parallel.For(0, data_len, i =>
 			{
-				float height = TerrainTileMap[i];
-				HeightTexture[i] = new(height, height, height);
-			}
-		}
-		public static void ColorArrayToTexture(this Color[] colors, int2 size, out Texture2D texture)
-		{
-			texture = new(size.x, size.y, TextureFormat.RGB24, 0, true);
-			texture.SetPixels(colors);
+				tiles[i] = TileTable[Data[i]];
+				var data_pos = i_data[i];
+				positions[i] = new(data_pos.x, data_pos.y);
+			});
+
+			Positions = positions;
+			Tiles = tiles;
 		}
 	}
 }
