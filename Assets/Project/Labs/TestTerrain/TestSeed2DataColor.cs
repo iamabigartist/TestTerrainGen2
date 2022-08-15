@@ -23,7 +23,7 @@ namespace Labs.TestTerrain
 		{
 			var jh = new JobHandle();
 			JobFor<GenSeed>.Plan(new(out var data, seed_size.area()), ref jh);
-			EnlargePlan(data, seed_size, out var results, stage_list.ToArray(), rand_seed, ref jh);
+			PlanEnlarge(data, seed_size, out var results, stage_list.ToArray(), rand_seed, ref jh);
 			JobFor<SeedDataToColorRand>.Plan(new(results.Last(), out var result_color), ref jh);
 			jh.Complete();
 			MarkCoordinate(result_color);

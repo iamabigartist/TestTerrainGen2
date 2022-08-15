@@ -5,6 +5,7 @@ namespace JobTerrainGen.View
 {
 	public struct DataToColorByTable : IJobForRunner
 	{
+		
 		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (data.Length, 1024);
 
 		[ReadOnly] NativeHashMap<int, float3> color_table;

@@ -6,7 +6,7 @@ namespace JobTerrainGen.Area
 	{
 		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (seed_data.Length, 1024);
 
-		NativeArray<int> seed_data;
+		[ReadOnly] NativeArray<int> seed_data;
 		NativeHashMap<int, int>.ParallelWriter area_seed_index_by_area_id;
 		public void Execute(int i_seed)
 		{

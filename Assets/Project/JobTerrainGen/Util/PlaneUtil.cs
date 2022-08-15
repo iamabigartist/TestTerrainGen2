@@ -9,7 +9,7 @@ namespace JobTerrainGen.Util
 {
 	public static class PlaneUtil
 	{
-		public static void EnlargePlan(NativeArray<int> data, int2 data_size, out NativeArray<int>[] Results, TerrainGenStage[] EnlargeStages, uint plan_rand_seed, ref JobHandle deps)
+		public static void PlanEnlarge(NativeArray<int> data, int2 data_size, out NativeArray<int>[] Results, TerrainGenStage[] EnlargeStages, uint plan_rand_seed, ref JobHandle deps)
 		{
 			var stage_count = EnlargeStages.Length;
 			Results = new NativeArray<int>[stage_count];

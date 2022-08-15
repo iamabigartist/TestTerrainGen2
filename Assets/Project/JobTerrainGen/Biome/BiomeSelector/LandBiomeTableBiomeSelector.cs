@@ -1,12 +1,15 @@
-﻿using Unity.Collections;
+﻿using System;
+using Unity.Collections;
 using Unity.Mathematics;
 using Utils;
 using static Unity.Mathematics.math;
+using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.Biome.BiomeSelector
 {
 
 	public struct LandBiomeTableBiomeSelector : IBiomeSelector
 	{
+		[Serializable]
 		public struct LandBiomeInfo
 		{
 			public int id;
@@ -20,7 +23,8 @@ namespace JobTerrainGen.Biome.BiomeSelector
 			}
 		}
 
-		static float max_index_distance = pow(2, 0.5f);
+		float max_index_distance;
+		float weight_pow;
 		NativeArray<LandBiomeInfo> biome_table;
 
 		public void GetBiome(Random rand, float Temperature, float Humidity, int Ocean, out int ResultBiomeID)
@@ -37,7 +41,7 @@ namespace JobTerrainGen.Biome.BiomeSelector
 					var table_biome_info = biome_table[i];
 					var table_biome_position = new float2(table_biome_info.humidity, table_biome_info.temperature);
 					var position_weight = max_index_distance - distance(cur_seed_position, table_biome_position);
-					var table_biome_weight = pow(position_weight, 2f);
+					var table_biome_weight = pow(position_weight, weight_pow);
 					biome_weights[i] = table_biome_weight;
 				}
 				var result_index = rand.SelectWithProbability(biome_weights);
@@ -45,8 +49,10 @@ namespace JobTerrainGen.Biome.BiomeSelector
 			}
 		}
 
-		public LandBiomeTableBiomeSelector(NativeArray<LandBiomeInfo> BiomeTable)
+		public LandBiomeTableBiomeSelector(NativeArray<LandBiomeInfo> BiomeTable, float WeightPow)
 		{
+			max_index_distance = pow(2, 0.5f);
+			weight_pow = WeightPow;
 			biome_table = BiomeTable;
 		}
 	}

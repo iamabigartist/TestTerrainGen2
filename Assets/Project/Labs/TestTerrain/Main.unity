@@ -272,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &836322528
 Transform:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836322525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -302,8 +302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentTerrainResultSize:
-    x: 8192
-    y: 8192
+    x: 256
+    y: 256
   Tester: {fileID: 439395532}
   rand_seed: 0
   seed_size:
@@ -314,11 +314,6 @@ MonoBehaviour:
   - rid: 9133313521423482909
   - rid: 9133313521423482910
   - rid: 9133313521423482911
-  - rid: 9133313521423482912
-  - rid: 9133313545660792832
-  - rid: 9133313545660792836
-  - rid: 9133313545660792837
-  - rid: 9133313545660792838
   references:
     version: 2
     RefIds:
@@ -333,19 +328,122 @@ MonoBehaviour:
     - rid: 9133313521423482911
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
-    - rid: 9133313521423482912
+--- !u!1 &938461868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938461869}
+  - component: {fileID: 938461870}
+  m_Layer: 0
+  m_Name: TestBiome
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &938461869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938461868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8062935, y: -49.62269, z: 14.121929}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1323879504}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &938461870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938461868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17116fe77cb47baa2f2dcc1d9463ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tester: {fileID: 1449309711}
+  RandSeed: 100
+  LandSeedSize:
+    x: 8
+    y: 8
+  LandRatio: 0.3
+  HumidityNoiseScale: 0.2
+  BiomeWeightPow: 10
+  LandTerrainGenStage:
+  - rid: 1969982136200462352
+  - rid: 1969982136200462353
+  - rid: 1969982136200462354
+  - rid: 1969982136200462355
+  - rid: 1969982136200462356
+  - rid: 1969982136200462357
+  - rid: 1969982136200462358
+  - rid: 1969982136200462431
+  - rid: 1969982136200462432
+  BiomeTable:
+  - id: 4
+    humidity: 0
+    temperature: 0
+  - id: 5
+    humidity: 0.7
+    temperature: 0
+  - id: 6
+    humidity: 0
+    temperature: 0.7
+  - id: 7
+    humidity: 0.5
+    temperature: 0.7
+  BiomeColors:
+  - id: 4
+    color: {r: 0.73819864, g: 0.8925038, b: 0.9056604, a: 0}
+  - id: 5
+    color: {r: 0, g: 0.7264151, b: 0.5433101, a: 0}
+  - id: 6
+    color: {r: 0.3919319, g: 0.8113208, b: 0, a: 0}
+  - id: 7
+    color: {r: 0, g: 0.4811321, b: 0.2137774, a: 0}
+  - id: 1
+    color: {r: 0, g: 0.21582294, b: 1, a: 0}
+  - id: 2
+    color: {r: 0, g: 0.53006697, b: 1, a: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 1969982136200462352
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
-    - rid: 9133313545660792832
+    - rid: 1969982136200462353
+      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: Assembly-CSharp}
+    - rid: 1969982136200462354
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
-    - rid: 9133313545660792836
+    - rid: 1969982136200462355
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
-    - rid: 9133313545660792837
+    - rid: 1969982136200462356
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
-    - rid: 9133313545660792838
+    - rid: 1969982136200462357
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 1969982136200462358
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 1969982136200462431
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 1969982136200462432
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
 --- !u!1 &1092906456
@@ -373,7 +471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092906456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -394,8 +492,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentTerrainResultSize:
-    x: 256
-    y: 256
+    x: 8192
+    y: 8192
   Tester: {fileID: 1880058034}
   rand_seed: 3024677790
   seed_size:
@@ -407,10 +505,30 @@ MonoBehaviour:
   - rid: 9133313521423482905
   - rid: 9133313521423482906
   - rid: 9133313521423482907
+  - rid: 1969982136200462336
+  - rid: 1969982136200462338
+  - rid: 1969982136200462339
+  - rid: 1969982136200462340
+  - rid: 1969982136200462341
   land_ratio: 0.3
   references:
     version: 2
     RefIds:
+    - rid: 1969982136200462336
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 1969982136200462338
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 1969982136200462339
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 1969982136200462340
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
+    - rid: 1969982136200462341
+      type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
+        asm: Assembly-CSharp}
     - rid: 9133313521423482903
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
         asm: Assembly-CSharp}
@@ -563,6 +681,83 @@ MonoBehaviour:
   y_flip: 0
   x_flip: 0
   speed_ratio: 1
+--- !u!1001 &1323879503
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 938461869}
+    m_Modifications:
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256265577658613595, guid: da4efe00e7aaaf044b0264f2c67f9454,
+        type: 3}
+      propertyPath: m_Name
+      value: TextureTester
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: da4efe00e7aaaf044b0264f2c67f9454, type: 3}
+--- !u!4 &1323879504 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
+    type: 3}
+  m_PrefabInstance: {fileID: 1323879503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1394312030
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,6 +790,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449309711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3256265577658613584, guid: da4efe00e7aaaf044b0264f2c67f9454,
+    type: 3}
+  m_PrefabInstance: {fileID: 1323879503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8257d938044298a620544f88d1db4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1809487238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 556822699571920444, guid: 15a2e2852cb36534e8eb51844ddfc29f,

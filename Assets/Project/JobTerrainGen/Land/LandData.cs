@@ -24,6 +24,7 @@ namespace JobTerrainGen.Land
 	#region Data
 
 		public NativeArray<int> seed_data;
+		public NativeArray<int> area_terrain;
 		public NativeArray<int> area_ids;
 		public NativeHashMap<int, bool> land_by_area_id;
 
@@ -39,7 +40,7 @@ namespace JobTerrainGen.Land
 			size = TerrainGenStage.GetResultSize(InitSize, GenStages);
 			var jh = new JobHandle();
 			JobFor<GenSeedWithAroundOcean>.Plan(new(out seed_data, InitSize), ref jh);
-			PlaneUtil.EnlargePlan(seed_data, InitSize, out var area_results, GenStages, RandSeed, ref jh);
+			PlaneUtil.PlanEnlarge(seed_data, InitSize, out var area_results, GenStages, RandSeed, ref jh);
 			var enlarge_result = area_results.Last();
 			var shift = new int2(1, 1) * ((size / InitSize).x / 2);
 			JobFor<RotateShift>.Plan(new(enlarge_result, size, shift, out var area_data), ref jh);
@@ -49,7 +50,7 @@ namespace JobTerrainGen.Land
 			AreaToOceanLandRandomSelect.Run(area_ids, land_ratio, RandSeed, out land_by_area_id);
 			jh.Complete();
 
-			Dispose(seed_data, area_results, area_data, area_ids, land_by_area_id);
+			Dispose(area_results, area_data);
 		}
 	}
 }

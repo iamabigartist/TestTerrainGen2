@@ -6,7 +6,7 @@ namespace JobTerrainGen.Seed
 	{
 		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (seed_data.Length, 1024);
 
-		NativeArray<int> seed_data;
+		[WriteOnly] NativeArray<int> seed_data;
 		public void Execute(int i_seed)
 		{
 			seed_data[i_seed] = i_seed + 1;

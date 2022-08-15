@@ -13,9 +13,9 @@ namespace JobTerrainGen.EnlargeFractal.Enlarge
 		IndexRandGenerator rand_gen;
 		Index2D i;
 		Index2D i_2;
-		NativeArray<int> data;
+		[ReadOnly] NativeArray<int> data;
 		TEnlargeSampler sampler;
-		NativeArray<int> data_2;
+		[WriteOnly] NativeArray<int> data_2;
 
 		public void Execute(int i_pixel)
 		{

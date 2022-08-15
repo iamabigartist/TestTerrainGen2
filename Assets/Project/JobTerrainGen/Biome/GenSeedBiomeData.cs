@@ -4,7 +4,7 @@ using Utils;
 using Utils.JobUtil.Template;
 namespace JobTerrainGen.Biome
 {
-	public class GenSeedBiomeData<TBiomeSelector> : IJobForRunner
+	public struct GenSeedBiomeData<TBiomeSelector> : IJobForRunner
 		where TBiomeSelector : struct, IBiomeSelector
 	{
 

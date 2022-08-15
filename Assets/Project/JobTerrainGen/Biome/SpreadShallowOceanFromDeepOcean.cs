@@ -4,7 +4,7 @@ using Utils;
 using Utils.JobUtil.Template;
 namespace JobTerrainGen.Biome
 {
-	public struct SpreadShallowOcean : IJobForRunner
+	public struct SpreadShallowOceanFromDeepOcean : IJobForRunner
 	{
 		public (int ExecuteLen, int InnerLoopBatchCount) ScheduleParam => (source_ocean_data.Length, 8);
 
@@ -25,6 +25,7 @@ namespace JobTerrainGen.Biome
 				{
 					if (x == 0 && y == 0) { continue; }
 					var cur_neighbour_pos = seed_pos + new int2(x, y);
+					if (i.OutOfRange(cur_neighbour_pos)) { continue; }
 					if (source_ocean_data[i[cur_neighbour_pos]] == 0) { land_count++; }
 					if (source_ocean_data[i[cur_neighbour_pos]] == 2) { shallow_ocean_count++; }
 				}
@@ -44,7 +45,7 @@ namespace JobTerrainGen.Biome
 			result_ocean_data[i_seed] = seed_result;
 		}
 
-		public SpreadShallowOcean(NativeArray<int> SourceOceanData, int2 Size, uint RandSeed, out NativeArray<int> ResultOceanData)
+		public SpreadShallowOceanFromDeepOcean(NativeArray<int> SourceOceanData, int2 Size, uint RandSeed, out NativeArray<int> ResultOceanData)
 		{
 			rand_gen = new(RandSeed);
 			i = new(Size);

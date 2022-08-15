@@ -12,7 +12,7 @@ namespace JobTerrainGen.Biome
 		NativeArray<float> seed_temperature_data;
 		public void Execute(int i_seed)
 		{
-			var cur_dimension = 1 - i[i_seed].y / i.Size.y;
+			var cur_dimension = 1 - i[i_seed].y / (float)i.Size.y;
 			seed_temperature_data[i_seed] = cur_dimension;
 		}
 
