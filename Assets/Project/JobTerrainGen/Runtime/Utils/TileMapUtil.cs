@@ -16,7 +16,7 @@ namespace Project.JobTerrainGen.Utils
 			var tiles = new TTile[data_len];
 			Parallel.For(0, data_len, i =>
 			{
-				tiles[i] = TileTable[Data[i]];
+				tiles[i] = TileTable.TryGetValue(Data[i], out var tile) ? tile : null;
 				var data_pos = i_data[i];
 				positions[i] = new(data_pos.x, data_pos.y);
 			});
