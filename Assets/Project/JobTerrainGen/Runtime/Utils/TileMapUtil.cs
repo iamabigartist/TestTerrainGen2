@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-namespace JobTerrainGen.Utils
+namespace Project.JobTerrainGen.Runtime.Utils
 {
 	public static class TileMapUtil
 	{

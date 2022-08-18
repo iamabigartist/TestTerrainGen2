@@ -1,6 +1,6 @@
 ﻿using System;
 using Unity.Mathematics;
-namespace JobTerrainGen.Pipeline
+namespace Project.JobTerrainGen.Runtime.Pipeline
 {
 	[Serializable]
 	public abstract class TerrainGenStage

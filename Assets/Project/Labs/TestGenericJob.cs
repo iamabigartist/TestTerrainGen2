@@ -1,4 +1,4 @@
-﻿using JobTerrainGen.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
 using Unity.Jobs;
 using UnityEngine;
 namespace Labs

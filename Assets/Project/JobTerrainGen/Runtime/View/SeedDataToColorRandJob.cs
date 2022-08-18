@@ -1,8 +1,8 @@
-﻿using JobTerrainGen.Utils;
-using JobTerrainGen.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Runtime.Utils;
+using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Mathematics;
-namespace JobTerrainGen.View
+namespace Project.JobTerrainGen.Runtime.View
 {
 	public struct SeedDataToColorRand : IJobForRunner
 	{

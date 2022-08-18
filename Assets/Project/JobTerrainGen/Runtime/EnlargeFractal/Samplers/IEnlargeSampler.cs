@@ -1,8 +1,8 @@
 ﻿using System;
-using JobTerrainGen.Pipeline;
+using Project.JobTerrainGen.Runtime.Pipeline;
 using Unity.Mathematics;
 using Random = Unity.Mathematics.Random;
-namespace JobTerrainGen.EnlargeFractal.Samplers
+namespace Project.JobTerrainGen.Runtime.EnlargeFractal.Samplers
 {
 	[Serializable]
 	public abstract class Enlarge2X2Stage : TerrainGenStage

@@ -1,11 +1,6 @@
-﻿using JobTerrainGen.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
 using Unity.Collections;
-namespace JobTerrainGen.Land
-{
-	using Data = NativeArray<int>;
-}
-
-namespace JobTerrainGen.Land
+namespace Project.JobTerrainGen.Runtime.Land
 {
 	public struct AreaTerrainToLandTerrain : IJobForRunner
 	{

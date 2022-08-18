@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using JobTerrainGen.Utils;
+using Project.JobTerrainGen.Runtime.Utils;
 using Unity.Collections;
 using Unity.Mathematics;
-namespace JobTerrainGen.Land
+namespace Project.JobTerrainGen.Runtime.Land
 {
 	public static class AreaToOceanLandRandomSelect
 	{

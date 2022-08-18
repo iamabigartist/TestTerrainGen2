@@ -2,7 +2,7 @@
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-namespace JobTerrainGen.View
+namespace Project.JobTerrainGen.Runtime.View
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,

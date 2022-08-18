@@ -1,7 +1,7 @@
 ﻿using System;
 using Unity.Collections;
 using Random = Unity.Mathematics.Random;
-namespace JobTerrainGen.Utils
+namespace Project.JobTerrainGen.Runtime.Utils
 {
 	public static class RandomUtil
 	{

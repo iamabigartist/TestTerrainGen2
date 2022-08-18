@@ -1,6 +1,6 @@
 ﻿using Unity.Burst;
 using Unity.Jobs;
-namespace JobTerrainGen.Utils.JobUtil.Template
+namespace Project.JobTerrainGen.Runtime.Utils.JobUtil.Template
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,

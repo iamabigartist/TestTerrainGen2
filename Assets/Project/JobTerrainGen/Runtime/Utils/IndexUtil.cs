@@ -1,6 +1,6 @@
 ﻿using Unity.Mathematics;
 using static Unity.Mathematics.math;
-namespace JobTerrainGen.Utils
+namespace Project.JobTerrainGen.Runtime.Utils
 {
 
 	public static class IndexUtil {}

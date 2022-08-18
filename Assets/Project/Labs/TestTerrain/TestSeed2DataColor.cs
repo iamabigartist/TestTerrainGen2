@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using JobTerrainGen.Seed;
-using JobTerrainGen.Utils;
-using JobTerrainGen.Utils.JobUtil.Template;
-using JobTerrainGen.View;
+using Project.JobTerrainGen.Runtime.Seed;
+using Project.JobTerrainGen.Runtime.Utils;
+using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
+using Project.JobTerrainGen.Runtime.View;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;

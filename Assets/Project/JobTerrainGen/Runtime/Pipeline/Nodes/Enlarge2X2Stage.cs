@@ -1,6 +1,6 @@
-﻿using JobTerrainGen.EnlargeFractal.Samplers;
+﻿using Project.JobTerrainGen.Runtime.EnlargeFractal.Samplers;
 using Unity.Mathematics;
-namespace JobTerrainGen.Pipeline.Nodes
+namespace Project.JobTerrainGen.Runtime.Pipeline.Nodes
 {
 	public class Enlarge2X2Stage<TEnlargeSampler> : PipelineStage
 		where TEnlargeSampler : IEnlargeSampler

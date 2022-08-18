@@ -1,6 +1,6 @@
 ﻿using Unity.Mathematics;
 using UnityEngine;
-namespace JobTerrainGen.Utils
+namespace Project.JobTerrainGen.Runtime.Utils
 {
 	public static class MathematicsUtil
 	{

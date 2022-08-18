@@ -1,4 +1,4 @@
-﻿namespace JobTerrainGen.Pipeline
+﻿namespace Project.JobTerrainGen.Runtime.Pipeline
 {
 	public abstract class PipelineNodePort {}
 

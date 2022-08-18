@@ -1,8 +1,8 @@
-﻿using JobTerrainGen.Utils;
-using JobTerrainGen.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Runtime.Utils;
+using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Mathematics;
-namespace JobTerrainGen.Seed
+namespace Project.JobTerrainGen.Runtime.Seed
 {
 	public struct GenSeedWithAroundOcean : IJobForRunner
 	{

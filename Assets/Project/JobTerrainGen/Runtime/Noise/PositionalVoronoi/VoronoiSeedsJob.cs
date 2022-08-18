@@ -1,10 +1,10 @@
-﻿using JobTerrainGen.Utils;
+﻿using Project.JobTerrainGen.Runtime.Utils;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using static Unity.Mathematics.math;
-namespace JobTerrainGen.Noise.PositionalVoronoi
+namespace Project.JobTerrainGen.Runtime.Noise.PositionalVoronoi
 {
 	[BurstCompile(
 		FloatPrecision.High, FloatMode.Fast,

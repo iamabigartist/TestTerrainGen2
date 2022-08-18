@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using JobTerrainGen.EnlargeFractal.Samplers;
-using JobTerrainGen.Pipeline;
-using JobTerrainGen.Utils;
-using JobTerrainGen.Utils.JobUtil;
+using Project.JobTerrainGen.Runtime.EnlargeFractal.Samplers;
+using Project.JobTerrainGen.Runtime.Pipeline;
+using Project.JobTerrainGen.Runtime.Utils;
+using Project.JobTerrainGen.Runtime.Utils.JobUtil;
 using PrototypeUtils;
 using Unity.Collections;
 using Unity.Mathematics;

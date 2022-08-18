@@ -2,7 +2,7 @@
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
-namespace JobTerrainGen.Utils
+namespace Project.JobTerrainGen.Runtime.Utils
 {
 	[RequireComponent(typeof(Renderer), typeof(Collider))]
 	public class TextureTester : MonoBehaviour
