@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 366568808}
   - component: {fileID: 366568807}
-  - component: {fileID: 366568809}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -218,26 +217,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &366568809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366568806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!4 &439395528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3256265577658613588, guid: da4efe00e7aaaf044b0264f2c67f9454,
@@ -310,24 +289,24 @@ MonoBehaviour:
     x: 16
     y: 16
   stage_list:
-  - rid: 9133313521423482908
-  - rid: 9133313521423482909
-  - rid: 9133313521423482910
-  - rid: 9133313521423482911
+  - rid: 1969982202593411088
+  - rid: 1969982202593411089
+  - rid: 1969982202593411090
+  - rid: 1969982202593411091
   references:
     version: 2
     RefIds:
-    - rid: 9133313521423482908
+    - rid: 1969982202593411088
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 9133313521423482909
-      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: Assembly-CSharp}
-    - rid: 9133313521423482910
+        asm: JobTerrainGen}
+    - rid: 1969982202593411089
+      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: JobTerrainGen}
+    - rid: 1969982202593411090
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 9133313521423482911
+        asm: JobTerrainGen}
+    - rid: 1969982202593411091
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
+        asm: JobTerrainGen}
 --- !u!1 &938461868
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,13 +363,13 @@ MonoBehaviour:
   HumidityNoiseScale: 0.2
   BiomeWeightPow: 10
   LandTerrainGenStage:
-  - rid: 1969982136200462352
-  - rid: 1969982136200462353
-  - rid: 1969982136200462354
-  - rid: 1969982136200462355
-  - rid: 1969982136200462356
-  - rid: 1969982136200462357
-  - rid: 1969982136200462358
+  - rid: 1969982202593411076
+  - rid: 1969982202593411077
+  - rid: 1969982202593411078
+  - rid: 1969982202593411079
+  - rid: 1969982202593411080
+  - rid: 1969982202593411083
+  - rid: 1969982202593411081
   BiomeTable:
   - id: 4
     humidity: 0
@@ -433,26 +412,26 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 1969982136200462352
+    - rid: 1969982202593411076
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462353
-      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: Assembly-CSharp}
-    - rid: 1969982136200462354
+        asm: JobTerrainGen}
+    - rid: 1969982202593411077
+      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: JobTerrainGen}
+    - rid: 1969982202593411078
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462355
+        asm: JobTerrainGen}
+    - rid: 1969982202593411079
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462356
+        asm: JobTerrainGen}
+    - rid: 1969982202593411080
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462357
+        asm: JobTerrainGen}
+    - rid: 1969982202593411081
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462358
+        asm: JobTerrainGen}
+    - rid: 1969982202593411083
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
+        asm: JobTerrainGen}
 --- !u!1 &951461068
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,49 +606,49 @@ MonoBehaviour:
     x: 8
     y: 8
   stage_list:
-  - rid: 9133313521423482903
-  - rid: 9133313521423482904
-  - rid: 9133313521423482905
-  - rid: 9133313521423482906
-  - rid: 9133313521423482907
-  - rid: 1969982136200462336
-  - rid: 1969982136200462338
-  - rid: 1969982136200462339
-  - rid: 1969982136200462340
-  - rid: 1969982136200462341
+  - rid: 1969982202593411092
+  - rid: 1969982202593411093
+  - rid: 1969982202593411094
+  - rid: 1969982202593411095
+  - rid: 1969982202593411096
+  - rid: 1969982202593411097
+  - rid: 1969982202593411098
+  - rid: 1969982202593411099
+  - rid: 1969982202593411100
+  - rid: 1969982202593411101
   land_ratio: 0.3
   references:
     version: 2
     RefIds:
-    - rid: 1969982136200462336
+    - rid: 1969982202593411092
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462338
+        asm: JobTerrainGen}
+    - rid: 1969982202593411093
+      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: JobTerrainGen}
+    - rid: 1969982202593411094
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462339
+        asm: JobTerrainGen}
+    - rid: 1969982202593411095
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462340
+        asm: JobTerrainGen}
+    - rid: 1969982202593411096
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 1969982136200462341
+        asm: JobTerrainGen}
+    - rid: 1969982202593411097
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 9133313521423482903
+        asm: JobTerrainGen}
+    - rid: 1969982202593411098
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 9133313521423482904
-      type: {class: SawtoothEnlarge, ns: JobTerrainGen.EnlargeFractal.Samplers, asm: Assembly-CSharp}
-    - rid: 9133313521423482905
+        asm: JobTerrainGen}
+    - rid: 1969982202593411099
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 9133313521423482906
+        asm: JobTerrainGen}
+    - rid: 1969982202593411100
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
-    - rid: 9133313521423482907
+        asm: JobTerrainGen}
+    - rid: 1969982202593411101
       type: {class: NormalEnlargeStage, ns: JobTerrainGen.EnlargeFractal.Samplers,
-        asm: Assembly-CSharp}
+        asm: JobTerrainGen}
 --- !u!1 &1230241113
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +660,6 @@ GameObject:
   - component: {fileID: 1230241116}
   - component: {fileID: 1230241115}
   - component: {fileID: 1230241114}
-  - component: {fileID: 1230241117}
   - component: {fileID: 1230241118}
   m_Layer: 0
   m_Name: Main Camera
@@ -756,39 +734,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1230241117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230241113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!114 &1230241118
 MonoBehaviour:
   m_ObjectHideFlags: 0
