@@ -1,7 +1,7 @@
 ﻿using System;
+using JobTerrainGen.Utils;
 using Unity.Collections;
 using Unity.Mathematics;
-using Utils;
 using static Unity.Mathematics.math;
 using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.Biome.BiomeSelector

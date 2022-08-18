@@ -1,6 +1,6 @@
 ﻿using System;
+using JobTerrainGen.Utils;
 using Unity.Collections;
-using Utils;
 using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.EnlargeFractal.Samplers
 {

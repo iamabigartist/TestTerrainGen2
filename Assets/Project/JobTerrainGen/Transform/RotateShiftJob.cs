@@ -1,7 +1,7 @@
-﻿using Unity.Collections;
+﻿using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
+using Unity.Collections;
 using Unity.Mathematics;
-using Utils;
-using Utils.JobUtil.Template;
 namespace JobTerrainGen.Transform
 {
 	public struct RotateShift : IJobForRunner

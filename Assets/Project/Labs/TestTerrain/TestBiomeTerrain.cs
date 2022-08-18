@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using JobTerrainGen.Pipeline;
+using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
 using JobTerrainGen.View;
 using PrototypeUtils;
 using Unity.Collections;
@@ -8,13 +10,11 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Utils;
-using Utils.JobUtil.Template;
 using static JobTerrainGen.Biome.BiomeSelector.LandBiomeTableBiomeSelector;
-using static JobTerrainGen.Util.ProcessUtil;
+using static JobTerrainGen.Utils.ProcessUtil;
 using static Unity.Collections.Allocator;
-using static Utils.JobUtil.NativeContainerUtils;
-using static Utils.TileMapUtil;
+using static JobTerrainGen.Utils.JobUtil.NativeContainerUtils;
+using static JobTerrainGen.Utils.TileMapUtil;
 using Random = Unity.Mathematics.Random;
 namespace Labs.TestTerrain
 {

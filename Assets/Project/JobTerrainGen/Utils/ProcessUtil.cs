@@ -2,24 +2,52 @@
 using JobTerrainGen.Area;
 using JobTerrainGen.Biome;
 using JobTerrainGen.Biome.BiomeSelector;
+using JobTerrainGen.EnlargeFractal.Enlarge;
+using JobTerrainGen.EnlargeFractal.Samplers;
 using JobTerrainGen.Land;
 using JobTerrainGen.Noise.Samplers;
 using JobTerrainGen.Pipeline;
 using JobTerrainGen.Seed;
 using JobTerrainGen.Transform;
+using JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-using Utils;
-using Utils.JobUtil.Template;
 using static JobTerrainGen.Biome.BiomeSelector.LandBiomeTableBiomeSelector;
-using static JobTerrainGen.Util.PlaneUtil;
 using static Unity.Jobs.JobHandle;
-using static Utils.JobUtil.NativeContainerUtils;
-namespace JobTerrainGen.Util
+using static JobTerrainGen.Utils.JobUtil.NativeContainerUtils;
+namespace JobTerrainGen.Utils
 {
 	public static class ProcessUtil
 	{
+		public static void PlanEnlarge(NativeArray<int> data, int2 data_size, out NativeArray<int>[] Results, TerrainGenStage[] EnlargeStages, uint plan_rand_seed, ref JobHandle deps)
+		{
+			var stage_count = EnlargeStages.Length;
+			Results = new NativeArray<int>[stage_count];
+			var rand = Random.CreateFromIndex(plan_rand_seed);
+
+			for (int i = 0; i < stage_count; i++)
+			{
+				var stage_rand_seed = rand.NextUInt();
+				switch (EnlargeStages[i])
+				{
+					case NormalEnlargeStage:
+						{
+							JobFor<Enlarge2X2<Compare11Sampler>>.Plan(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
+						}
+						break;
+					case SawtoothEnlarge:
+						{
+							JobFor<Enlarge2X2<Rand11Sampler>>.Plan(new(data, data_size, out data, new(), stage_rand_seed), ref deps);
+						}
+						break;
+					default: throw new();
+				}
+				data_size *= 2;
+				Results[i] = data;
+			}
+		}
+		
 		public static void RunGenerateLandTerrain(
 			int2 SeedSize, TerrainGenStage[] GenStages, float LandRatio, uint RandSeed,
 			out NativeArray<int> LandAreaTerrain, out NativeArray<int> AreaIdArray,

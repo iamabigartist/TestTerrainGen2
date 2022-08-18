@@ -4,12 +4,12 @@ using JobTerrainGen.DataDefinition;
 using JobTerrainGen.Pipeline;
 using JobTerrainGen.Seed;
 using JobTerrainGen.Transform;
-using JobTerrainGen.Util;
+using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-using Utils.JobUtil.Template;
-using static Utils.JobUtil.NativeContainerUtils;
+using static JobTerrainGen.Utils.JobUtil.NativeContainerUtils;
 namespace JobTerrainGen.Land
 {
 	public class LandData : TerrainData
@@ -40,7 +40,7 @@ namespace JobTerrainGen.Land
 			size = TerrainGenStage.GetResultSize(InitSize, GenStages);
 			var jh = new JobHandle();
 			JobFor<GenSeedWithAroundOcean>.Plan(new(out seed_data, InitSize), ref jh);
-			PlaneUtil.PlanEnlarge(seed_data, InitSize, out var area_results, GenStages, RandSeed, ref jh);
+			ProcessUtil.PlanEnlarge(seed_data, InitSize, out var area_results, GenStages, RandSeed, ref jh);
 			var enlarge_result = area_results.Last();
 			var shift = new int2(1, 1) * ((size / InitSize).x / 2);
 			JobFor<RotateShift>.Plan(new(enlarge_result, size, shift, out var area_data), ref jh);

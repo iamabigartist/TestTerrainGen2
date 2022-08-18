@@ -3,14 +3,13 @@ using JobTerrainGen.Area;
 using JobTerrainGen.Land;
 using JobTerrainGen.Seed;
 using JobTerrainGen.Transform;
+using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
 using JobTerrainGen.View;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
-using Utils;
-using Utils.JobUtil.Template;
-using static JobTerrainGen.Util.PlaneUtil;
 namespace Labs.TestTerrain
 {
 	public class TestLandformAlgo : TerrainDataTester
@@ -21,7 +20,7 @@ namespace Labs.TestTerrain
 		{
 			var jh = new JobHandle();
 			JobFor<GenSeedWithAroundOcean>.Plan(new(out var seed_data, seed_size), ref jh);
-			PlanEnlarge(seed_data, seed_size, out var area_results, stage_list, rand_seed, ref jh);
+			ProcessUtil.PlanEnlarge(seed_data, seed_size, out var area_results, stage_list, rand_seed, ref jh);
 			var enlarge_result = area_results.Last();
 			var shift = new int2(1, 1) * (EnlargeScale / 2);
 			JobFor<RotateShift>.Plan(new(enlarge_result, TerrainResultSize, shift, out var area_data), ref jh);

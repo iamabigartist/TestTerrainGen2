@@ -1,6 +1,6 @@
 using System.Linq;
+using JobTerrainGen.Utils;
 using UnityEngine;
-using Utils;
 namespace Labs
 {
 	public class TestTextureTester : MonoBehaviour

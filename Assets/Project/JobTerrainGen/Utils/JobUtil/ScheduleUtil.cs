@@ -1,5 +1,5 @@
 ﻿using Unity.Jobs;
-namespace Utils.JobUtil
+namespace JobTerrainGen.Utils.JobUtil
 {
 	public static class ScheduleUtil
 	{

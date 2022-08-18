@@ -1,12 +1,11 @@
 ﻿using System.Linq;
 using JobTerrainGen.Seed;
+using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
 using JobTerrainGen.View;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-using Utils;
-using Utils.JobUtil.Template;
-using static JobTerrainGen.Util.PlaneUtil;
 namespace Labs.TestTerrain
 {
 	public class TestSeed2DataColor : TerrainDataTester
@@ -23,7 +22,7 @@ namespace Labs.TestTerrain
 		{
 			var jh = new JobHandle();
 			JobFor<GenSeed>.Plan(new(out var data, seed_size.area()), ref jh);
-			PlanEnlarge(data, seed_size, out var results, stage_list.ToArray(), rand_seed, ref jh);
+			ProcessUtil.PlanEnlarge(data, seed_size, out var results, stage_list.ToArray(), rand_seed, ref jh);
 			JobFor<SeedDataToColorRand>.Plan(new(results.Last(), out var result_color), ref jh);
 			jh.Complete();
 			MarkCoordinate(result_color);

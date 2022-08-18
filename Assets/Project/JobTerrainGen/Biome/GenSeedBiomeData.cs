@@ -1,7 +1,7 @@
 ﻿using JobTerrainGen.Biome.BiomeSelector;
+using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
-using Utils;
-using Utils.JobUtil.Template;
 namespace JobTerrainGen.Biome
 {
 	public struct GenSeedBiomeData<TBiomeSelector> : IJobForRunner

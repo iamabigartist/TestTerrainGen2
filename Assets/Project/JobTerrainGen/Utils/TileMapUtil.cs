@@ -3,16 +3,17 @@ using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-namespace Utils
+namespace JobTerrainGen.Utils
 {
 	public static class TileMapUtil
 	{
-		public static void DataToTileMap(int[] Data, int2 Size, Dictionary<int, Tile> TileTable, out Vector3Int[] Positions, out Tile[] Tiles)
+		public static void DataToTileMap<TTile>(int[] Data, int2 Size, Dictionary<int, TTile> TileTable, out Vector3Int[] Positions, out TTile[] Tiles)
+			where TTile : TileBase
 		{
 			int data_len = Data.Length;
 			var i_data = new Index2D(Size);
 			var positions = new Vector3Int[data_len];
-			var tiles = new Tile[data_len];
+			var tiles = new TTile[data_len];
 			Parallel.For(0, data_len, i =>
 			{
 				tiles[i] = TileTable[Data[i]];

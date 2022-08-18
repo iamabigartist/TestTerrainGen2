@@ -1,9 +1,9 @@
-﻿using Unity.Collections;
+﻿using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
+using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
-using Utils;
-using Utils.JobUtil.Template;
 namespace Labs
 {
 	public struct TestPerlinNoise : IJobForRunner

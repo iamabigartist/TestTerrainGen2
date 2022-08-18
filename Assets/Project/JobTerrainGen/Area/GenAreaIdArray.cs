@@ -1,5 +1,5 @@
-﻿using Unity.Collections;
-using Utils.JobUtil.Template;
+﻿using JobTerrainGen.Utils.JobUtil.Template;
+using Unity.Collections;
 namespace JobTerrainGen.Area
 {
 	public struct GenAreaIdArray : IJobForRunner

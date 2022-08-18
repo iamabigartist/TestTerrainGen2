@@ -1,6 +1,6 @@
-﻿using Unity.Jobs;
+﻿using JobTerrainGen.Utils.JobUtil.Template;
+using Unity.Jobs;
 using UnityEngine;
-using Utils.JobUtil.Template;
 namespace Labs
 {
 	public interface IInner

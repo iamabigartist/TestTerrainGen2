@@ -1,5 +1,5 @@
 ﻿using System;
-using Utils;
+using JobTerrainGen.Utils;
 using Random = Unity.Mathematics.Random;
 namespace JobTerrainGen.EnlargeFractal.Samplers
 {

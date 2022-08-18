@@ -1,8 +1,8 @@
 ﻿using JobTerrainGen.EnlargeFractal.Samplers;
+using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Mathematics;
-using Utils;
-using Utils.JobUtil.Template;
 namespace JobTerrainGen.EnlargeFractal.Enlarge
 {
 	public struct Enlarge2X2<TEnlargeSampler> : IJobForRunner

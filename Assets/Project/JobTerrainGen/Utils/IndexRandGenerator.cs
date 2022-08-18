@@ -1,5 +1,5 @@
 ﻿using Unity.Mathematics;
-namespace Utils
+namespace JobTerrainGen.Utils
 {
 	/// <summary>
 	///     是否有必要使用来简化代码？

@@ -1,7 +1,7 @@
 using System.Linq;
+using JobTerrainGen.Utils;
 using Unity.Mathematics;
 using UnityEngine;
-using Utils;
 namespace Labs
 {
 	[RequireComponent(typeof(MeshRenderer))]

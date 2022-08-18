@@ -1,8 +1,8 @@
-﻿using Unity.Burst;
+﻿using JobTerrainGen.Utils;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-using Utils;
 using static Unity.Mathematics.math;
 namespace JobTerrainGen.Noise.PositionalVoronoi
 {

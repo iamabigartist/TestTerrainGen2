@@ -1,8 +1,8 @@
 ﻿using JobTerrainGen.Noise.Samplers;
+using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Mathematics;
-using Utils;
-using Utils.JobUtil.Template;
 namespace JobTerrainGen.Biome
 {
 	public struct GenSeedHumidityDataByOcean<TNoiseSampler> : IJobForRunner

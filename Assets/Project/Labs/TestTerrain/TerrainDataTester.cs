@@ -2,14 +2,14 @@
 using System.Linq;
 using JobTerrainGen.EnlargeFractal.Samplers;
 using JobTerrainGen.Pipeline;
+using JobTerrainGen.Utils;
+using JobTerrainGen.Utils.JobUtil;
 using PrototypeUtils;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
-using Utils;
-using Utils.JobUtil;
 using Random = Unity.Mathematics.Random;
-namespace JobTerrainGen.View
+namespace Labs.TestTerrain
 {
 	public abstract class TerrainDataTester : MonoBehaviour
 	{

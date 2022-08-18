@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Collections;
-namespace Utils.JobUtil
+namespace JobTerrainGen.Utils.JobUtil
 {
 	public static class NativeContainerUtils
 	{
