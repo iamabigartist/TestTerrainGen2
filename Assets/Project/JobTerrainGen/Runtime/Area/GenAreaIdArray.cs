@@ -1,6 +1,6 @@
-﻿using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
-namespace Project.JobTerrainGen.Runtime.Area
+namespace Project.JobTerrainGen.Area
 {
 	public struct GenAreaIdArray : IJobForRunner
 	{

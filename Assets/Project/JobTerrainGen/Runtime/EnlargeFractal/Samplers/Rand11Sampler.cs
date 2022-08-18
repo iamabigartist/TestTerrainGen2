@@ -1,7 +1,7 @@
 ﻿using System;
-using Project.JobTerrainGen.Runtime.Utils;
+using Project.JobTerrainGen.Utils;
 using Random = Unity.Mathematics.Random;
-namespace Project.JobTerrainGen.Runtime.EnlargeFractal.Samplers
+namespace Project.JobTerrainGen.EnlargeFractal.Samplers
 {
 	[Serializable]
 	public class SawtoothEnlarge : Enlarge2X2Stage {}

@@ -1,10 +1,10 @@
 ﻿using System;
-using Project.JobTerrainGen.Runtime.Utils;
+using Project.JobTerrainGen.Utils;
 using Unity.Collections;
 using Unity.Mathematics;
 using static Unity.Mathematics.math;
 using Random = Unity.Mathematics.Random;
-namespace Project.JobTerrainGen.Runtime.Biome.BiomeSelector
+namespace Project.JobTerrainGen.Biome.BiomeSelector
 {
 
 	public struct LandBiomeTableBiomeSelector : IBiomeSelector

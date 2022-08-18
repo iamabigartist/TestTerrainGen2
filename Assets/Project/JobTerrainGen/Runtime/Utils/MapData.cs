@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using Unity.Collections;
 using Unity.Mathematics;
-namespace Project.JobTerrainGen.Runtime.Utils
+namespace Project.JobTerrainGen.Utils
 {
 	public struct MapData<TData> : IDisposable
 		where TData : struct

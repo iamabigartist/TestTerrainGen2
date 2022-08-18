@@ -1,6 +1,6 @@
-﻿using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
-namespace Project.JobTerrainGen.Runtime.Biome
+namespace Project.JobTerrainGen.Biome
 {
 	/// <summary>
 	///     fixed: 1 for deep ocean, 2 for shallow ocean, 3 for river

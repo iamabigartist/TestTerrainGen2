@@ -1,7 +1,7 @@
-﻿using Project.JobTerrainGen.Runtime.Pipeline;
+﻿using Project.JobTerrainGen.Pipeline;
 using Unity.Collections;
 using Unity.Mathematics;
-namespace Project.JobTerrainGen.Runtime.DataDefinition
+namespace Project.JobTerrainGen.DataDefinition
 {
 	public abstract class TerrainData
 	{

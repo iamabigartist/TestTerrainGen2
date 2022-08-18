@@ -1,4 +1,4 @@
-﻿namespace Project.JobTerrainGen.Runtime.Pipeline
+﻿namespace Project.JobTerrainGen.Pipeline
 {
 	public class Pipeline {}
 }

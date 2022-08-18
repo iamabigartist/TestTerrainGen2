@@ -1,6 +1,6 @@
-﻿using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
-namespace Project.JobTerrainGen.Runtime.Land
+namespace Project.JobTerrainGen.Land
 {
 	public struct AreaTerrainToLandTerrain : IJobForRunner
 	{

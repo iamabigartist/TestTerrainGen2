@@ -1,22 +1,22 @@
 ﻿using System.Linq;
-using Project.JobTerrainGen.Runtime.Area;
-using Project.JobTerrainGen.Runtime.Biome;
-using Project.JobTerrainGen.Runtime.Biome.BiomeSelector;
-using Project.JobTerrainGen.Runtime.EnlargeFractal.Enlarge;
-using Project.JobTerrainGen.Runtime.EnlargeFractal.Samplers;
-using Project.JobTerrainGen.Runtime.Land;
-using Project.JobTerrainGen.Runtime.Noise.Samplers;
-using Project.JobTerrainGen.Runtime.Pipeline;
-using Project.JobTerrainGen.Runtime.Seed;
-using Project.JobTerrainGen.Runtime.Transform;
-using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
+using Project.JobTerrainGen.Area;
+using Project.JobTerrainGen.Biome;
+using Project.JobTerrainGen.Biome.BiomeSelector;
+using Project.JobTerrainGen.EnlargeFractal.Enlarge;
+using Project.JobTerrainGen.EnlargeFractal.Samplers;
+using Project.JobTerrainGen.Land;
+using Project.JobTerrainGen.Noise.Samplers;
+using Project.JobTerrainGen.Pipeline;
+using Project.JobTerrainGen.Seed;
+using Project.JobTerrainGen.Transform;
+using Project.JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-using static Project.JobTerrainGen.Runtime.Biome.BiomeSelector.LandBiomeTableBiomeSelector;
+using static Project.JobTerrainGen.Biome.BiomeSelector.LandBiomeTableBiomeSelector;
 using static Unity.Jobs.JobHandle;
-using static Project.JobTerrainGen.Runtime.Utils.JobUtil.NativeContainerUtils;
-namespace Project.JobTerrainGen.Runtime.Utils
+using static Project.JobTerrainGen.Utils.JobUtil.NativeContainerUtils;
+namespace Project.JobTerrainGen.Utils
 {
 	public static class ProcessUtil
 	{

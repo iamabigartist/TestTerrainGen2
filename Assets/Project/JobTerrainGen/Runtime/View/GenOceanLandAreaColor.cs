@@ -1,7 +1,7 @@
-﻿using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Mathematics;
-namespace Project.JobTerrainGen.Runtime.View
+namespace Project.JobTerrainGen.View
 {
 	public struct LandAreaToColor : IJobForRunner
 	{

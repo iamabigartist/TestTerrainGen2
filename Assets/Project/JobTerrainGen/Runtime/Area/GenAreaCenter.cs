@@ -1,9 +1,9 @@
-﻿using Project.JobTerrainGen.Runtime.Utils;
+﻿using Project.JobTerrainGen.Utils;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-namespace Project.JobTerrainGen.Runtime.Area
+namespace Project.JobTerrainGen.Area
 {
 	[BurstCompile(
 		DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance,

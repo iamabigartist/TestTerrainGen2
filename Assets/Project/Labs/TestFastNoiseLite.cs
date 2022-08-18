@@ -1,4 +1,4 @@
-﻿using Project.JobTerrainGen.Runtime.Utils;
+﻿using Project.JobTerrainGen.Utils;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;

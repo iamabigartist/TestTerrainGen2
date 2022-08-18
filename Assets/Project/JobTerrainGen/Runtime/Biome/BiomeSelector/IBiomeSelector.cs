@@ -1,5 +1,5 @@
 ﻿using Unity.Mathematics;
-namespace Project.JobTerrainGen.Runtime.Biome.BiomeSelector
+namespace Project.JobTerrainGen.Biome.BiomeSelector
 {
 	public interface IBiomeSelector
 	{

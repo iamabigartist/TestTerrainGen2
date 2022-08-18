@@ -1,5 +1,5 @@
 ﻿using Unity.Collections;
-namespace Project.JobTerrainGen.Runtime.Land
+namespace Project.JobTerrainGen.Land
 {
 	public static class AreaIdSetToLandIdArray
 	{

@@ -1,5 +1,5 @@
 using System.Linq;
-using Project.JobTerrainGen.Runtime.Utils;
+using Project.JobTerrainGen.Utils;
 using Unity.Mathematics;
 using UnityEngine;
 namespace Labs

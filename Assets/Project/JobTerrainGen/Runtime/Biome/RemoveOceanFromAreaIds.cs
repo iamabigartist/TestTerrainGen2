@@ -1,5 +1,5 @@
 ﻿using Unity.Collections;
-namespace Project.JobTerrainGen.Runtime.Biome
+namespace Project.JobTerrainGen.Biome
 {
 	public static class RemoveOceanFromAreaIds
 	{

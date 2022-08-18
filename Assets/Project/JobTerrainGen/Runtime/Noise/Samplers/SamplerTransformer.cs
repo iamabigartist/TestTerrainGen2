@@ -1,5 +1,5 @@
 ﻿using Unity.Mathematics;
-namespace Project.JobTerrainGen.Runtime.Noise.Samplers
+namespace Project.JobTerrainGen.Noise.Samplers
 {
 	public struct SamplerTransformer
 	{

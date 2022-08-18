@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Linq;
-using Project.JobTerrainGen.Runtime.Pipeline;
-using Project.JobTerrainGen.Runtime.Utils;
-using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
-using Project.JobTerrainGen.Runtime.View;
+using Project.JobTerrainGen.Pipeline;
+using Project.JobTerrainGen.Utils;
+using Project.JobTerrainGen.Utils.JobUtil.Template;
+using Project.JobTerrainGen.View;
 using PrototypeUtils;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static Project.JobTerrainGen.Runtime.Biome.BiomeSelector.LandBiomeTableBiomeSelector;
-using static Project.JobTerrainGen.Runtime.Utils.ProcessUtil;
+using static Project.JobTerrainGen.Biome.BiomeSelector.LandBiomeTableBiomeSelector;
+using static Project.JobTerrainGen.Utils.ProcessUtil;
 using static Unity.Collections.Allocator;
-using static Project.JobTerrainGen.Runtime.Utils.JobUtil.NativeContainerUtils;
-using static Project.JobTerrainGen.Runtime.Utils.TileMapUtil;
+using static Project.JobTerrainGen.Utils.JobUtil.NativeContainerUtils;
+using static Project.JobTerrainGen.Utils.TileMapUtil;
 using Random = Unity.Mathematics.Random;
 namespace Labs.TestTerrain
 {

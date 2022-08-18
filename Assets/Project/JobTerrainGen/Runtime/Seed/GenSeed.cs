@@ -1,6 +1,6 @@
-﻿using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
-namespace Project.JobTerrainGen.Runtime.Seed
+namespace Project.JobTerrainGen.Seed
 {
 	public struct GenSeed : IJobForRunner
 	{

@@ -1,9 +1,9 @@
-﻿using Project.JobTerrainGen.Runtime.Noise.Samplers;
-using Project.JobTerrainGen.Runtime.Utils;
-using Project.JobTerrainGen.Runtime.Utils.JobUtil.Template;
+﻿using Project.JobTerrainGen.Noise.Samplers;
+using Project.JobTerrainGen.Utils;
+using Project.JobTerrainGen.Utils.JobUtil.Template;
 using Unity.Collections;
 using Unity.Mathematics;
-namespace Project.JobTerrainGen.Runtime.Biome
+namespace Project.JobTerrainGen.Biome
 {
 	public struct GenSeedHumidityDataByOcean<TNoiseSampler> : IJobForRunner
 		where TNoiseSampler : struct, INoiseSampler
