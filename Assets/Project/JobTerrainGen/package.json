@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "displayName": "JobTerrainGen",
   "description": "Library using Job System to generate 2D terrains",
-  "unity": "2022.1.11f1",
+  "unity": "2021.3",
   "keywords": [
     "job",
     "terrain"
