@@ -1,6 +1,6 @@
 # JobTerrainGen
 
-All kinds of Utils Collection for fast Unity prototype making. Currently self-used and rapidly removed and changed, recommend a fork for self use.
+Library using Job System to generate 2D terrains.
 
 ## Installation
 

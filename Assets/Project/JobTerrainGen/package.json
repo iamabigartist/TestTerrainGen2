@@ -2,7 +2,7 @@
   "name": "com.chua.job-terrain-gen",
   "version": "0.0.1",
   "displayName": "JobTerrainGen",
-  "description": "Package using Job System to generate 2D terrains",
+  "description": "Library using Job System to generate 2D terrains",
   "unity": "2022.1.11f1",
   "keywords": [
     "job",
